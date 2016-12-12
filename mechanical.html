@@ -15,6 +15,7 @@
     <script src="js/skel.min.js"></script>
     <script src="js/skel-layers.min.js"></script>
     <script src="js/init.js"></script>
+    <script src="js/w3-html-include.js"></script>
 
     <!-- HTML360 -->
     <script src="js/threesixty.min.js"></script>
@@ -43,6 +44,7 @@
         }
 
         $().ready(function () {
+            HTMLInclude();
             html360_init();
         });
 
@@ -63,20 +65,7 @@
 <body>
 
 <!-- Header -->
-
-<header id="header">
-    <h1><a href="index.html">Final Mechanical Subsystem</a></h1>
-    <nav id="nav">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="team.html">The Team</a></li>
-            <li><a href="process.html">The Process</a></li>
-            <li><a href="electrical.html">Electrical</a></li>
-            <li><a href="software.html">Software</a></li>
-            <li><a href="mechanical.html">Mechanical</a></li>
-        </ul>
-    </nav>
-</header>
+<div w3-include-html="header.html"></div>
 
 <!-- Main -->
 <section id="main" class="wrapper">

@@ -25,27 +25,13 @@
         $().ready(function () {
             HTMLInclude();
         });
-        $().load(function(){
-            console.log("LOADING");
-        })
+
     </script>
 </head>
 <body class="landing">
 
 <!-- Header -->
-<header id="header">
-    <h1><a href="index.html">Terrapin</a></h1>
-    <nav id="nav">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="team.html">The Team</a></li>
-            <li><a href="process.html">The Process</a></li>
-            <li><a href="electrical.html">Electrical</a></li>
-            <li><a href="software.html">Software</a></li>
-            <li><a href="mechanical.html">Mechanical</a></li>
-        </ul>
-    </nav>
-</header>
+<div w3-include-html="header.html"></div>
 
 <!-- Banner -->
     <section id="banner">
