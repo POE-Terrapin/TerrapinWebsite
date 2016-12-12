@@ -12,7 +12,13 @@
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
         <script src="js/w3-html-include.js"></script>
-
+        <style>
+            div.button{
+                float: left;
+                width: 33%;
+                display: block;
+            }
+        </style>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -40,6 +46,12 @@
                 wrapper = $(".wrapper");
                 maxSlides = wrapper.length;
                 showSlide(slideIndex);
+
+                $("div.button").click(function(){
+                    var idx = $(this).index();
+                    showSlide(idx);
+                })
+
             })
 
         </script>
@@ -49,6 +61,19 @@
 		<!-- Header -->
         <div w3-include-html="header.html"></div>
 
+        <div style="width: 100%">
+            <div class="button" style="background-color: rgba(128,128,0,0.3);">
+                Software
+            </div>
+
+            <div class="button" style="background-color: rgba(0,128,128,0.3);">
+                Electrical
+            </div>
+
+        <div class="button" style="background-color: rgba(128,0,128,0.3);">
+                Mechanical
+            </div>
+        </div>
         <!-- Main -->
 			<section id="software" class="wrapper">
 				<div class="container">
@@ -165,62 +190,173 @@
 			</section>
 
 
-			<section id="electrical" class="wrapper">
-				<div class="container">
-					<header class="major">
-						<h2>The Electrical Process</h2>
-						<h3>Sprint 1</h3>
-					</header>
-					<p>We started off making a prototype of our design. This prototype utilized photodiodes, motors, and LEDs. The photodiodes were used to sense the light and allowed the robot to move away from shadows. To amplify the signal from the photodiodes we utilized op amps. This gave us a significant difference in the output voltage from shadows and light. The motors moved wheels so our prototype can move around. The LEDs showed which direction the robot was moving. This was to test a method of communicating our robot's state with a viewer. In this case the state was moving forward or backward.</p>
-					<span class="image left"><img src="images/eProcess1.jpg" alt="" /></span>
-					<span class="image right"><img src="images/eProcess2.jpg" alt="" /></span>
-					<br> </br>
-					<br> </br>
-					<br> </br>
-					<br> </br>
-					<br> </br>
-					<br> </br>
-					<br> </br>
-					<br> </br>
-					<br> </br>
-					<br> </br>
-					<br> </br>
-					<br> </br>
-					<br> </br>
+        <section id="electrical" class="wrapper">
+            <div class="container">
+                <header class="major">
+                    <h2>The Electrical Process</h2>
+
+                    <h3>Sprint 1</h3>
+                </header>
+                <p>We started off making a prototype of our design. This prototype utilized photodiodes, motors, and
+                    LEDs. The photodiodes were used to sense the light and allowed the robot to move away from shadows.
+                    To amplify the signal from the photodiodes we utilized op amps. This gave us a significant
+                    difference in the output voltage from shadows and light. The motors moved wheels so our prototype
+                    can move around. The LEDs showed which direction the robot was moving. This was to test a method of
+                    communicating our robot's state with a viewer. In this case the state was moving forward or
+                    backward.</p>
+                <span class="image left"><img src="images/eProcess1.jpg" alt=""/></span>
+                <span class="image right"><img src="images/eProcess2.jpg" alt=""/></span>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
 
 
-					<header class="major">
-							<h3>Sprint 2</h3>
-					</header>
+                <header class="major">
+                    <h3>Sprint 2</h3>
+                </header>
 
-				<p>At the beginning of this sprint we planned out the additional sensors we would need and realized that we were going to need more Analog pins on the arduino. To remedy this we utilized a 8-to-1 multiplexer 4051. This uses the arduino digital pins 3, 4, and 5 to select which of the 8 outputs on the multiplexer to send to analog pin 0.</p>
-				<p>Another goal for this sprint was obstacle avoidance. Therefore we needed to be able to sense obstacles. For this we added 3 IR sensors. One went on the head pointing forward and the other two were on the sides.</p>
-				<p>We ran into problems with finding analog pins that could be used to read the sensors and were not already assigned to another task on the motor shield. Once we realized this problem it was an easy fix to avoid using those analog pins for sensors.</p>
+                <p>At the beginning of this sprint we planned out the additional sensors we would need and realized that
+                    we were going to need more Analog pins on the arduino. To remedy this we utilized a 8-to-1
+                    multiplexer 4051. This uses the arduino digital pins 3, 4, and 5 to select which of the 8 outputs on
+                    the multiplexer to send to analog pin 0.</p>
 
-				<header class="major">
-						<h3>Sprint 3</h3>
-				</header>
-				<p>We purchased additional sensors and calibrated them for plant care!</p>
-				<p>The photoresistors were calibrated as a new way to sense light that would use less space on the breadboard. This allowed for us to measure light from taking the voltage between the photoresistor and a 330 Ohm resistor. </p>
-				<p>We added and calibrated a soil moisture sensor by putting it in different wet paper towels. Luckily this gave us a good range of data points so no amplification was necessary.</p>
-				<p>We added and calibrated a temperature and humidity sensor. For the sake of this project being indoors the humidity sensor is not nearly as important when compared to the temperature because we do not plan for it to rain inside. The temperature sensor will make sure the plants do not overheat from the sunlight. If it is too hot, the turtle can move into the shade until it cools down. Calibrating this sensor was difficult because there is one output pin for both pieces of data. After a bunch of research we found an example code for this sensor and this worked to properly display our sensor values.</p>
-				<span class="image left"><img src="images/eProcess3.jpg" alt="" /></span>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-<!-- add pic captions and sprint 4 stuff -->
-				<img src="images/eProcess4.jpg" alt="" />
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-		</div>
-	</section>
+                <p>Another goal for this sprint was obstacle avoidance. Therefore we needed to be able to sense
+                    obstacles. For this we added 3 IR sensors. One went on the head pointing forward and the other two
+                    were on the sides.</p>
 
+                <p>We ran into problems with finding analog pins that could be used to read the sensors and were not
+                    already assigned to another task on the motor shield. Once we realized this problem it was an easy
+                    fix to avoid using those analog pins for sensors.</p>
+
+                <header class="major">
+                    <h3>Sprint 3</h3>
+                </header>
+                <p>We purchased additional sensors and calibrated them for plant care!</p>
+
+                <p>The photoresistors were calibrated as a new way to sense light that would use less space on the
+                    breadboard. This allowed for us to measure light from taking the voltage between the photoresistor
+                    and a 330 Ohm resistor. </p>
+
+                <p>We added and calibrated a soil moisture sensor by putting it in different wet paper towels. Luckily
+                    this gave us a good range of data points so no amplification was necessary.</p>
+
+                <p>We added and calibrated a temperature and humidity sensor. For the sake of this project being indoors
+                    the humidity sensor is not nearly as important when compared to the temperature because we do not
+                    plan for it to rain inside. The temperature sensor will make sure the plants do not overheat from
+                    the sunlight. If it is too hot, the turtle can move into the shade until it cools down. Calibrating
+                    this sensor was difficult because there is one output pin for both pieces of data. After a bunch of
+                    research we found an example code for this sensor and this worked to properly display our sensor
+                    values.</p>
+                <span class="image left"><img src="images/eProcess3.jpg" alt=""/></span>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <!-- add pic captions and sprint 4 stuff -->
+                <img src="images/eProcess4.jpg" alt=""/>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+            </div>
+        </section>
+
+        <section id="mechnical" class="wrapper">
+            <div class="container">
+                <header class="major">
+                    <h2>The Mechanical Process</h2>
+
+                    <h3>Sprint 1</h3>
+                </header>
+                <p>We started off making a prototype of our design. This prototype utilized photodiodes, motors, and
+                    LEDs. The photodiodes were used to sense the light and allowed the robot to move away from shadows.
+                    To amplify the signal from the photodiodes we utilized op amps. This gave us a significant
+                    difference in the output voltage from shadows and light. The motors moved wheels so our prototype
+                    can move around. The LEDs showed which direction the robot was moving. This was to test a method of
+                    communicating our robot's state with a viewer. In this case the state was moving forward or
+                    backward.</p>
+                <span class="image left"><img src="images/eProcess1.jpg" alt=""/></span>
+                <span class="image right"><img src="images/eProcess2.jpg" alt=""/></span>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+                <br> </br>
+
+
+                <header class="major">
+                    <h3>Sprint 2</h3>
+                </header>
+
+                <p>At the beginning of this sprint we planned out the additional sensors we would need and realized that
+                    we were going to need more Analog pins on the arduino. To remedy this we utilized a 8-to-1
+                    multiplexer 4051. This uses the arduino digital pins 3, 4, and 5 to select which of the 8 outputs on
+                    the multiplexer to send to analog pin 0.</p>
+
+                <p>Another goal for this sprint was obstacle avoidance. Therefore we needed to be able to sense
+                    obstacles. For this we added 3 IR sensors. One went on the head pointing forward and the other two
+                    were on the sides.</p>
+
+                <p>We ran into problems with finding analog pins that could be used to read the sensors and were not
+                    already assigned to another task on the motor shield. Once we realized this problem it was an easy
+                    fix to avoid using those analog pins for sensors.</p>
+
+                <header class="major">
+                    <h3>Sprint 3</h3>
+                </header>
+                <p>We purchased additional sensors and calibrated them for plant care!</p>
+
+                <p>The photoresistors were calibrated as a new way to sense light that would use less space on the
+                    breadboard. This allowed for us to measure light from taking the voltage between the photoresistor
+                    and a 330 Ohm resistor. </p>
+
+                <p>We added and calibrated a soil moisture sensor by putting it in different wet paper towels. Luckily
+                    this gave us a good range of data points so no amplification was necessary.</p>
+
+                <p>We added and calibrated a temperature and humidity sensor. For the sake of this project being indoors
+                    the humidity sensor is not nearly as important when compared to the temperature because we do not
+                    plan for it to rain inside. The temperature sensor will make sure the plants do not overheat from
+                    the sunlight. If it is too hot, the turtle can move into the shade until it cools down. Calibrating
+                    this sensor was difficult because there is one output pin for both pieces of data. After a bunch of
+                    research we found an example code for this sensor and this worked to properly display our sensor
+                    values.</p>
+                <span class="image left"><img src="images/eProcess3.jpg" alt=""/></span>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <!-- add pic captions and sprint 4 stuff -->
+                <img src="images/eProcess4.jpg" alt=""/>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+            </div>
+        </section>
         <div w3-include-html="footer.html"></div>
 
 	</body>
