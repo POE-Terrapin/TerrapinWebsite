@@ -6,7 +6,6 @@ function HTMLInclude() {
     z = document.getElementsByTagName("*");
     for (i = 0; i < z.length; i++) {
         if (z[i].getAttribute("w3-include-html")) {
-            console.log(z);
             a = z[i].cloneNode(false);
             file = z[i].getAttribute("w3-include-html");
             var xhttp = new XMLHttpRequest();
