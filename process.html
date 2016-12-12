@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:data-role="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>The Process</title>
@@ -19,6 +19,7 @@
             width: 33%;
             display: block;
         }
+
     </style>
     <noscript>
         <link rel="stylesheet" href="css/skel.css"/>
@@ -49,11 +50,16 @@
             maxSlides = wrapper.length;
             showSlide(slideIndex);
 
-            $("div.button").click(function () {
+            $("div.slide").click(function () {
                 var idx = $(this).index();
                 showSlide(idx);
-            })
+            });
 
+            $(".collapsible").hide();
+
+            $(".collapsor").click(function () {
+                $(this).find(".collapsible").toggle();
+            });
         })
 
     </script>
@@ -64,15 +70,15 @@
 <div w3-include-html="header.html"></div>
 
 <div style="width: 100%">
-    <div class="button" style="background-color: rgba(128,128,0,0.3);">
+    <div class="button slide" style="background-color: rgba(128,128,0,0.3);">
         Software
     </div>
 
-    <div class="button" style="background-color: rgba(0,128,128,0.3);">
+    <div class="button slide" style="background-color: rgba(0,128,128,0.3);">
         Electrical
     </div>
 
-    <div class="button" style="background-color: rgba(128,0,128,0.3);">
+    <div class="button slide" style="background-color: rgba(128,0,128,0.3);">
         Mechanical
     </div>
 </div>
@@ -98,8 +104,11 @@
             what our final product might do if needing to cool down. It also only moved along a single axis, and was
             completely unaware of any surroundings forward or back.</p>
 
-        <p>CODE SNIPPET: Sensor checking and bare-bones decision algorithm<span class="image center"><img
-                src="images/sProcess1.png" alt=""/></span></p>
+        <div class="collapsor">
+            <p class="button">CODE SNIPPET: Sensor checking and bare-bones decision algorithm</p>
+            <span class="image center collapsible"><img
+                    src="images/sProcess1.png" alt=""/></span>
+        </div>
 
 
         <p>Sketch code focused on staying in light:
@@ -146,17 +155,22 @@
             </ul>
         </ul>
         </p>
-        <p>CODE SNIPPET: Checking IRs for which direction is acceptable. Contains the later discarded
-            normalization.<span class="image center"><img src="images/sProcess2.png" alt=""/></span></p>
-
+        <div class="collapsor">
+            <p class="button">CODE SNIPPET: Checking IRs for which direction is acceptable. Contains the later discarded
+                normalization.</p>
+            <span class="image center collapsible"><img src="images/sProcess2.png" alt=""/></span>
+        </div>
 
         <p>We didn’t quite manage to combine this algorithm with the movement of the legs that the mechanical team made,
             although control code to move the servo-based legs was written. Instead, this time was spent struggling with
             the pins on the motor shield. Due to the difficulties there, we switched to using a multiplexer to cycle
             through sensors, and wrote basic code to switch between which pins on the multiplexer were being read.</p>
 
-        <p>CODE SNIPPET: method used to select a pin from the IR sensor.<span class="image center"><img
-                src="images/sProcess3.png" alt=""/></span></p>
+        <div class="collapsor">
+            <p class="button">CODE SNIPPET: method used to select a pin from the IR sensor.</p>
+            <span class="image center collapsible"><img
+                    src="images/sProcess3.png" alt=""/></span>
+        </div>
 
         <p>We then included IR sensors to check forward and to the right whenever the turtle has to move</p>
         <ul>
@@ -199,12 +213,18 @@
         <p>Code for a temperature sensor and a soil moisture sensor were also added, with a ‘seeking shade’ setting that
             looks for shade to rest in, but these were not tied to actual sensors.</p>
 
-        <p>CODE SNIPPET: Raspberry Pi main loop, which sends directions to Serial<span class="image center"><img
-                src="images/sProcess4.png" alt=""/></span></p>
-        <br></br>
+        <div class="collapsor">
+            <p class="button">CODE SNIPPET: Raspberry Pi main loop, which sends directions to Serial</p>
+           <span
+                   class="image center collapsible"><img
+                   src="images/sProcess4.png" alt=""/></span>
+        </div>
 
-        <p>CODE SNIPPET: Arduino control sequence, writing to and receiving directions from serial/Raspberry Pi<span
-                class="image center"><img src="images/sProcess5.png" alt=""/></span></p>
+        <div class="collapsor">
+            <p class="button">CODE SNIPPET: Arduino control sequence, writing to and receiving directions from serial/Raspberry Pi</p>
+            <span
+                    class="image center collapsible"><img src="images/sProcess5.png" alt=""/></span>
+        </div>
 
         <ul>
             <li>Combined leg control with previous movement control loop</li>
@@ -366,10 +386,13 @@
         </header>
 
         <p>Our next step in Sprint 2 was to develop quadrupedal motion mimicking that of a turtle for our robot.
-            We referenced the movements of the <a href="https://www.youtube.com/watch?v=9dHtW0immKg">Allbot VR408 Robot System</a>, a small spider-looking robot with two degrees of freedom in each leg provided by servos.
+            We referenced the movements of the <a href="https://www.youtube.com/watch?v=9dHtW0immKg">Allbot VR408 Robot
+                System</a>, a small spider-looking robot with two degrees of freedom in each leg provided by servos.
         </p>
 
-        <p>Before we began designing the legs, we learned more about servos and the kind of load they can support. We drew a very simple free body diagram of the connection between the body and a leg of the turtle when the leg is on the ground:</p>
+        <p>Before we began designing the legs, we learned more about servos and the kind of load they can support. We
+            drew a very simple free body diagram of the connection between the body and a leg of the turtle when the leg
+            is on the ground:</p>
 
         <p>We ran into problems with finding analog pins that could be used to read the sensors and were not
             already assigned to another task on the motor shield. Once we realized this problem it was an easy
