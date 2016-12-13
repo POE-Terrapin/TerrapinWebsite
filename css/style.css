@@ -1141,3 +1141,12 @@ body.landing #header {
         opacity: 1
     }
 }
+
+.fig {
+    width: 100%;
+    text-align: center;
+}
+
+.fig > img {
+    width: 20%
+}
