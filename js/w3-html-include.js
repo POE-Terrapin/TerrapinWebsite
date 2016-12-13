@@ -2,6 +2,7 @@
  * Created by jamiecho on 12/11/16.
  */
 function HTMLInclude() {
+    console.log("??");
     var z, i, a, file, xhttp;
     z = document.getElementsByTagName("*");
     for (i = 0; i < z.length; i++) {

@@ -22,8 +22,9 @@
 
     <!-- JS to initialize threesixty when page loads -->
     <script type="text/javascript">
+        var included = false;
         function html360_init() {
-            product = $('.product').ThreeSixty({
+            product = $('#turtle_frames').ThreeSixty({
                 totalFrames: 24,
                 endFrame: 24,
                 currentFrame: 1,
@@ -43,8 +44,12 @@
             });
         }
 
-        $().ready(function () {
+        $(function(){
+            $("#footer").load("footer.html");
             HTMLInclude();
+        });
+
+        $().ready(function () {
             html360_init();
         });
 
@@ -71,13 +76,12 @@
 <section id="main" class="wrapper">
     <div class="container">
 
-
         <header class="major">
             <h2>Mechanical Subsystem</h2>
             <p>A Hybrid Quadrupedal Robot</p>
             <a href="#" class="image fit">
                 <div style="box-shadow: burlywood 1px 0px 50px;">
-                    <div class="threesixty product">
+                    <div id="turtle_frames" class="threesixty product">
                         <div class="spinner">
                             <span>0%</span>
                         </div>
@@ -112,9 +116,9 @@
 
     </div>
 </section>
+<!-- footer -->
 
-<!-- Footer -->
-<div w3-include-html="footer.html"></div>
+<div id="footer"></div>
 
 </body>
 </html>

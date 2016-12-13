@@ -24,8 +24,18 @@
             width: 100%;
             background-color: coral;
         }
-        .process:hover{
+
+        .process:hover {
             background-color: firebrick;
+        }
+
+        .fig {
+            width: 100%;
+            text-align: center;
+        }
+
+        .fig > img {
+            width: 20%
         }
 
     </style>
@@ -376,9 +386,8 @@
                     <p>Our next step in Sprint 2 was to develop quadrupedal motion mimicking that of a turtle for our
                         robot.
                         We referenced the movements of the <a href="https://www.youtube.com/watch?v=9dHtW0immKg">Allbot
-                            VR408 Robot
-                            System</a>, a small spider-looking robot with two degrees of freedom in each leg provided by
-                        servos.
+                            VR408 Robot System</a>,
+                        a small spider-looking robot with two degrees of freedom in each leg provided by servos.
                     </p>
 
                     <p>Before we began designing the legs, we learned more about servos and the kind of load they can
@@ -514,7 +523,146 @@
                       </span>
                     </div>
                 </header>
+                <p>Sprint 3 was focused on continuing the development of quadrupedal motion. From the leg prototype of
+                    Sprint 2, we realized that we needed three degrees of freedom to create a convincing turtle
+                    movement. The leg was tilting up and down and panning side to side, but for the two motions to be
+                    constructive, the leg needed to give under the turtle, or have a rolling motion. One of the options
+                    was to add a third servo to provide this degree of freedom. Instead, we decided to create a linkage
+                    driven by a motor that combines the pitch motion of the upper and lower portion of the legs. This
+                    choice kept the complexity of the system to two motors and did not add more weight at the end of the
+                    foot that the servo needed to support. It also improved the aesthetic of the robot by providing us
+                    with a convincing motion of a turtle leg without the need to program it and no extra bulky motors to
+                    cover up.</p>
 
+
+                <p>We chose to implement a Klann linkage which has 5 connections and 3 anchor points. Using the relative
+                    dimensions from the example on Wikipedia, we tinkered a little bit with lengths of the linkages and
+                    created an initial test prototype. Attaching it to a motor with a support we designed, it worked as intended:</p>
+                
+                <figure class="fig">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cRFd-gyLX1E" frameborder="0"
+                            allowfullscreen></iframe>
+                    <figcaption>Linkages to get desired motion.</figcaption>
+                </figure>
+
+                <p>
+                    The rightmost anchor is connected to the motor shaft
+                    which rotates a driving linkage. The other anchor points restrain the longest linkage to follow a
+                    path which brings the leg up, forwards, puts it down, and draws it underneath the body. With a test
+                    linkage working, we scaled it down to fit our turtle and laser cut all of the linkages. Early on,
+                    some linkages started to break, and we decided that a better material would be Delrin, as it was two
+                    times stronger flexurally. Until we could acquire Delrin, the joints on each linkage were reinforced
+                    by making them thicker.</p>
+
+                <figure class="fig">
+                    <img src="images/mech/s3/sprint_3_linkage.JPG"/>
+                    <figcaption>
+                        Caption: A mixture of delrin and hardboard was used for the linkages as we refined the design of
+                        the linkage
+                    </figcaption>
+                </figure>
+
+
+                <p>The linkage took care of two of the three degrees of freedom. The yaw motion was provided by a servo
+                    attached by a bell crank, a glorified 4-bar linkage, to the leg. As the servo rotates, the crank
+                    translates its rotation into a sweep of the motor at a wider angle. In this way, we have precise
+                    control of the angular position of the foot linkage.</p>
+
+                <figure class="fig">
+                    <img src="images/mech/s3/"
+                </figure>
+                Caption: Design allows legs to turn
+                <p>Here it is integrated together:
+                    https://www.youtube.com/watch?v=xNuBAAkjFvI </p>
+
+
+                <p>Due to the predicted heavy use of this movement, we were worried about friction between the motor
+                    bottom and the plate. We attempted to reducx
+                    xxe friction by embedding a marble in the motor support
+                    bottom which would in theory rotate more freely on the hardboard. As we saw later, the friction
+                    between these parts was not as big of a problem as the vertical movement of the robot with respect
+                    to the plate.</p>
+
+                Caption: Under the red motor support, you can see a part of the marble popping out
+                <p>The whole sprint was dedicated to pushing for a fully designed turtle to be able to test out every
+                    part and iterate if necessary in the next sprint. We started with creating a compartment to house
+                    the electronics. This bay would be separated from the plant by a plate which could be easily removed
+                    to access the electronics. Because the turtle is carrying a plant that has water that can
+                    potentially leak, all of our electrical components also needed to be well-isolated. We decided to
+                    attach the dome and the plant to the plate and design to be able to remove this entire system to
+                    access the electronics bay.</p>
+
+                Caption: Final CAD
+
+
+                <p>The electronics bay consists of a wall that follows the perimeter of the turtle base plate and screws
+                    into its bottom. It’s height was dictated at first by the height of the Arduino and the motor
+                    shield. When we integrated the klann linkage, it became apparent that the shell needed to be high
+                    enough to allow the topmost part of the leg to pass through without interference when the turtle is
+                    lifting its leg. Because the leg was aso rotating, cutouts were swept out in the shell to allow for
+                    full range of motion. The width was dictated by the length of the motors, which were unfortunately
+                    very wide and large. Although we were able to find motors that took up less space, the estimated
+                    cutout in CAD was not much smaller, and we stayed with our original motors. Cutouts for future
+                    wiring to the head and tail were also made.</p>
+
+                Caption: Electronics Bay
+                <p>Two of the IR sensors were also to be mounted in the shell. We wanted to preserve the aesthetic of
+                    the turtle, so the sensors would need to be embedded. This was an extremely difficult task because
+                    the shell is quite thick with limited space, and the sensors needed to be pointing at an angle to
+                    the horizontal to be useful in obstacle avoidance. It was also unclear how precise we would be able
+                    to mount them so that there would be no interference from the shell and the moving leg. For this
+                    reason, we ultimately decided to mount them underneath the base plate, at the head.</p>
+
+                Caption: Head
+                <p>The removeable plate went through two of its three iterations. At first, it was designed to slide
+                    laterally into the top of the electronics bay. However, upon consideration of the fabrication
+                    process, we could not easily cut the piece we needed. Instead of sliding, the plate would lift up
+                    and down off of the electronics bay shell. The first method of attachment of the plate to the shell
+                    were screws, but these take a lot of time to take out and put back in, and there was very little
+                    space on the shell to place them. Our next idea was to use magnets to keep the plate in place as the
+                    turtle wobble around. We used a combination of tiny sliding plates and glued parts to secure and
+                    prevent the magnets from escaping their places. We very quickly learned that the sliding plates were
+                    too small and precise for a 3D printer and were not worth our time. Gluing the magnets was not
+                    preferred because we could not easily change the configuration. For the sprint 3 deliverable, we
+                    used tape to secure the magnets. Although they seemed an elegant solution, we scrapped the magnets
+                    in favor of a simpler and more reliable attachment in the next sprint.</p>
+
+                Caption: Slide Plate, A magnet was taped into a pocket in both the slide plate and the electronics bay
+                shell
+                <p>We upgraded the caster wheels supporting the turtle to omnidirectional ones to allow for a larger
+                    range of motion. We only implemented linear movement, front and back, in Sprint 2 and therefore did
+                    not need the supporting wheels to rotate. Sprint 3 would integrate obstacle avoidance which requires
+                    the turtle to change its trajectory, making omnidirectional wheels a nice addition.</p>
+
+
+                <p>Because the electronics bay shell was complicated and required a lot of support material, we had only
+                    a part of it to work with when assembling the turtle. We also printed small foot attachments for the
+                    ends of the legs to make contact with the ground. The first test resulted in no movement from the
+                    turtle. The foot attachments were not making good contact with the ground, but even when we wrapped
+                    them in rubber tape, the turtle still would not move. We realized that instead of pulling the leg
+                    inwards and pushing the whole body forwards, the turtle was pushing the motor upwards, without
+                    affecting the body. There was a very loose vertical constraint on the motor, and with nothing to
+                    counteract the force of the foot’s push, the motor popped up and down. The marble that we had put in
+                    to lessen friction between the motor mount and the base plate was falling out and proving
+                    useless.</p>
+
+                Caption: Foot
+
+
+                <p>Initial solutions to the problem were to speed up the motor, clamp the shell and plate to the base
+                    plate, and to stick cardboard pieces between the motor and the shell to create a tighter vertical
+                    constraint on the motor. We also put more weight on the front of the robot to increase the friction
+                    on the foot. We also attached a foot made out of layers of hardboard to lengthen the linkage and to
+                    increase the contact area with the ground. These changes helped the turtle translate more of the
+                    push into lateral motion, but not enough to reliably prope it forwards, as seen in this video:
+                    https://www.youtube.com/watch?v=Ap4fOlc7e6o&feature=youtu.be </p>
+
+                <p>Instead of testing on a smooth surface, we tried the turtle on the rough side of some hardboard. This
+                    made an immense difference: https://www.youtube.com/watch?v=lGmxkizyCns After some time, however,
+                    the movement became less reliable again. Many causes were identified for the problem, including the
+                    legs being sloppy and not well constrained, not enough weight being applied to the legs because the
+                    caster wheels were supporting it, covering the feet in material with a higher coefficient of
+                    friction, and fortifying the linkages by doubling them.</p>
                 <!--ADD UPDATED SPRINT 3 MECHANICAL STUFF-->
             </div>
         </div>
@@ -635,244 +783,78 @@
                 <header class="major">
                     <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
                       <span style="font-size: 40px; background-color: #FFFFFF; padding: 0 10px;">
-                        Sprint 3 : Dive into Turtle Gaits
+                        Sprint 4 : Dive into Turtle Gaits
                       </span>
                     </div>
                 </header>
-
-                <p>
-                    Sprint 3 was focused on continuing the development of quadrupedal motion. From the leg prototype of
-                    Sprint 2, we realized that we needed three degrees of freedom to create a convincing turtle
-                    movement. The leg was tilting up and down and panning side to side, but for the two motions to be
-                    constructive, the leg needed to give under the turtle, or have a rolling motion. One of the options
-                    was to add a third servo to provide this degree of freedom. Instead, we decided to create a linkage
-                    driven by a motor that combines the pitch motion of the upper and lower portion of the legs. This
-                    choice kept the complexity of the system to two motors and did not add more weight at the end of the
-                    foot that the servo needed to support. It also improved the aesthetic of the robot by providing us
-                    with a convincing motion of a turtle leg without the need to program it and no extra bulky motors to
-                    cover up.
+                <p>The last few weeks were dedicated to finishing small parts of the design, making the linkage
+                    reliable, and fabricating the turtle.</p>
 
 
-                    We chose to implement a Klann linkage which has 5 connections and 3 anchor points. Using the
-                    relative dimensions from the example on Wikipedia, we tinkered a little bit with lengths of the
-                    linkages and created an initial test prototype.
-
-                    Caption: Linkages to get desired motion
-                    Attaching it to a motor with a support we designed, it worked as intended:
-                    https://www.youtube.com/watch?v=cRFd-gyLX1E. The rightmost anchor is connected to the motor shaft
-                    which rotates a driving linkage. The other anchor points restrain the longest linkage to follow a
-                    path which brings the leg up, forwards, puts it down, and draws it underneath the body. With a test
-                    linkage working, we scaled it down to fit our turtle and laser cut all of the linkages. Early on,
-                    some linkages started to break, and we decided that a better material would be Delrin, as it was two
-                    times stronger flexurally. Until we could acquire Delrin, the joints on each linkage were reinforced
-                    by making them thicker.
-
-                    Caption: A mixture of delrin and hardboard was used for the linkages as we refined the design of the
-                    linkage
+                <p>A head and a tail were designed to easily attach to the base plate and house the light sensors, LEDs,
+                    and IR sensors. We printed test parts to make sure that the sensors would fit into the holes and did
+                    not have interference from the walls in which they would be embedded. To make powering the turtle on
+                    and off easier, we embedded an easily accessible switch in the tail.</p>
 
 
-                    The linkage took care of two of the three degrees of freedom. The yaw motion was provided by a servo
-                    attached by a bell crank, a glorified 4-bar linkage, to the leg. As the servo rotates, the crank
-                    translates its rotation into a sweep of the motor at a wider angle. In this way, we have precise
-                    control of the angular position of the foot linkage.
+                <p>To finish the design, a mold for the dome was created. We wanted a transparent, ellipsoidal shell for
+                    the turtle to be able to see the plant from the outside and to look nice with the elliptical shape
+                    of the base plate. We manufactured the dome by vacuum forming plastic over a mold made out of
+                    machinable foam. The first pass failed because our sheet of acrylic was too small. The second dome
+                    turned out well for testing purposes, but was too foggy due to inadequate filing of the dome. The
+                    next iteration will be made on a smoother dome for better transparency.</p>
 
-                    Caption: Design allows legs to turn
-                    Here it is integrated together:
-                    https://www.youtube.com/watch?v=xNuBAAkjFvI
-
-
-                    Due to the predicted heavy use of this movement, we were worried about friction between the motor
-                    bottom and the plate. We attempted to reduce friction by embedding a marble in the motor support
-                    bottom which would in theory rotate more freely on the hardboard. As we saw later, the friction
-                    between these parts was not as big of a problem as the vertical movement of the robot with respect
-                    to the plate.
-
-                    Caption: Under the red motor support, you can see a part of the marble popping out
-                    The whole sprint was dedicated to pushing for a fully designed turtle to be able to test out every
-                    part and iterate if necessary in the next sprint. We started with creating a compartment to house
-                    the electronics. This bay would be separated from the plant by a plate which could be easily removed
-                    to access the electronics. Because the turtle is carrying a plant that has water that can
-                    potentially leak, all of our electrical components also needed to be well-isolated. We decided to
-                    attach the dome and the plant to the plate and design to be able to remove this entire system to
-                    access the electronics bay.
-
-                    Caption: Final CAD
+                (A mold was made out of machinable foam over which a sheet of PETG plastic was vacuum formed).
 
 
-                    The electronics bay consists of a wall that follows the perimeter of the turtle base plate and
-                    screws into its bottom. It’s height was dictated at first by the height of the Arduino and the motor
-                    shield. When we integrated the klann linkage, it became apparent that the shell needed to be high
-                    enough to allow the topmost part of the leg to pass through without interference when the turtle is
-                    lifting its leg. Because the leg was aso rotating, cutouts were swept out in the shell to allow for
-                    full range of motion. The width was dictated by the length of the motors, which were unfortunately
-                    very wide and large. Although we were able to find motors that took up less space, the estimated
-                    cutout in CAD was not much smaller, and we stayed with our original motors. Cutouts for future
-                    wiring to the head and tail were also made.
-
-                    Caption: Electronics Bay
-                    Two of the IR sensors were also to be mounted in the shell. We wanted to preserve the aesthetic of
-                    the turtle, so the sensors would need to be embedded. This was an extremely difficult task because
-                    the shell is quite thick with limited space, and the sensors needed to be pointing at an angle to
-                    the horizontal to be useful in obstacle avoidance. It was also unclear how precise we would be able
-                    to mount them so that there would be no interference from the shell and the moving leg. For this
-                    reason, we ultimately decided to mount them underneath the base plate, at the head.
-
-                    Caption: Head
-                    The removeable plate went through two of its three iterations. At first, it was designed to slide
-                    laterally into the top of the electronics bay. However, upon consideration of the fabrication
-                    process, we could not easily cut the piece we needed. Instead of sliding, the plate would lift up
-                    and down off of the electronics bay shell. The first method of attachment of the plate to the shell
-                    were screws, but these take a lot of time to take out and put back in, and there was very little
-                    space on the shell to place them. Our next idea was to use magnets to keep the plate in place as the
-                    turtle wobble around. We used a combination of tiny sliding plates and glued parts to secure and
-                    prevent the magnets from escaping their places. We very quickly learned that the sliding plates were
-                    too small and precise for a 3D printer and were not worth our time. Gluing the magnets was not
-                    preferred because we could not easily change the configuration. For the sprint 3 deliverable, we
-                    used tape to secure the magnets. Although they seemed an elegant solution, we scrapped the magnets
-                    in favor of a simpler and more reliable attachment in the next sprint.
-
-                    Caption: Slide Plate
-                    We upgraded the caster wheels supporting the turtle to omnidirectional ones to allow for a larger
-                    range of motion. We only implemented linear movement, front and back, in Sprint 2 and therefore did
-                    not need the supporting wheels to rotate. Sprint 3 would integrate obstacle avoidance which requires
-                    the turtle to change its trajectory, making omnidirectional wheels a nice addition.
+                <p>We wanted to be able to access the plant to take care of it, and therefore the dome must be
+                    removeable. Initially, the whole dome was to pop off, but keeping the water and dirt off of the
+                    electronics was of higher priority, and we decided that a hatch could be created in the dome for
+                    partial access instead. Using rebar wire, a hinge will be created to easily flip it up and down.
+                    In the interest of further protecting the electronics from water, we designed an inner ring that
+                    would attach to the plate and contain the soil and the plant. Instead of attempting to attach a thin
+                    dome to the base plate, its sides would be screwed to the inner ring and seal the barrier between
+                    the plant and the rest of the turtle. The inner ring also allowed us to adjust the height at which
+                    the dome would be sitting to not interfere with the plants.</p>
 
 
-                    Because the electronics bay shell was complicated and required a lot of support material, we had
-                    only a part of it to work with when assembling the turtle. We also printed small foot attachments
-                    for the ends of the legs to make contact with the ground. The first test resulted in no movement
-                    from the turtle. The foot attachments were not making good contact with the ground, but even when we
-                    wrapped them in rubber tape, the turtle still would not move. We realized that instead of pulling
-                    the leg inwards and pushing the whole body forwards, the turtle was pushing the motor upwards,
-                    without affecting the body. There was a very loose vertical constraint on the motor, and with
-                    nothing to counteract the force of the foot’s push, the motor popped up and down. The marble that we
-                    had put in to lessen friction between the motor mount and the base plate was falling out and proving
-                    useless.
+                <p>The plate separating the electronics bay from the dome was simplified further during this sprint.
+                    Instead of using magnets, the plate has press-fit dowels which will fit into slightly larger holes
+                    on the shell and secure the plate in the lateral plane. Because of the weight of the plant and dome,
+                    vertical movement will not be very significant and therefore does not need to be restrained. To
+                    remove the dome and plant, it simply needs to be lifted. This modification also allowed us to laser
+                    cut the plate out of hardboard and match it with the base plate for a better look.</p>
 
-                    Caption: Foot
+                Caption: CAD of the shell
 
 
-                    Initial solutions to the problem were to speed up the motor, clamp the shell and plate to the base
-                    plate, and to stick cardboard pieces between the motor and the shell to create a tighter vertical
-                    constraint on the motor. We also put more weight on the front of the robot to increase the friction
-                    on the foot. We also attached a foot made out of layers of hardboard to lengthen the linkage and to
-                    increase the contact area with the ground. These changes helped the turtle translate more of the
-                    push into lateral motion, but not enough to reliably prope it forwards, as seen in this video:
-                    https://www.youtube.com/watch?v=Ap4fOlc7e6o&feature=youtu.be
-                    Instead of testing on a smooth surface, we tried the turtle on the rough side of some hardboard.
-                    This made an immense difference: https://www.youtube.com/watch?v=lGmxkizyCns After some time,
-                    however, the movement became less reliable again. Many causes were identified for the problem,
-                    including the legs being sloppy and not well constrained, not enough weight being applied to the
-                    legs because the caster wheels were supporting it, covering the feet in material with a higher
-                    coefficient of friction, and fortifying the linkages by doubling them.
-                </p>
-                <!--ADD UPDATED SPRINT 3 MECHANICAL STUFF-->
+                <p>To put more weight onto the front of the turtle, the front caster wheel was made smaller to make the
+                    robot lean forwards. Furthermore, in order to reduce the tolerances in the linkages, which was the
+                    cause of failure in the turtle’s gait, we introduced journal bearings and dowel pins to connect the
+                    linkages rather than using poorly fitted #4 nuts and bolts. After these changes were implemented, it
+                    became apparent that for the turtle to walk, the legs must be completely out of phase with each
+                    other. Without any regulation, they slowly fall into phase and let the turtle drop onto its nose. By
+                    adding push buttons on the tips of the feet, we were able to keep track of when each leg was on the
+                    ground and use the Arduino to regulate the motion. Although we had planned to have four legs moving,
+                    we have decided to focus on the look and character of the turtle instead for the remaining week. We
+                    designed the turtle with possibility for later modifications in mind, a decision which allows us to
+                    confidently put the back two legs on the back burner.</p>
+
+                Caption: The front caster wheel was reduced in size to put more weight onto the front legs
+
+
+                <p>To make the robot look like a turtle, the electronics bay is being covered in epoxy, fiberglass, and
+                    a gradient wash of green and brown paint. We are experimenting with a stretchy fabric covering for
+                    the legs to mimic the skin of a turtle. The leg will have a tight fitting stocking of fabric fitted
+                    over it and pulled tight to all corners of the shell attached by strong velcro. This design will
+                    allow us to cover the unused holes from the back legs, access the linkages if necessary, and to play
+                    around with the look of the fabric.</p>
             </div>
-</section>
-
-
-<!-- MECHANICAL START -->
-
-<section id="mechnical" class="wrapper fade">
-    <header class="major">
-        <h2>The Mechanical Process</h2>
-    </header>
-    <div class="container">
-
-        <header class="major">
-            <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
-              <span style="font-size: 40px; background-color: #FFFFFF; padding: 0 10px;">
-                Sprint 1 : On A Roll!
-              </span>
-            </div>
-        </header>
-
-        <div style="text-align: center">
-            <iframe width="560" height="315"
-                    src="https://www.youtube.com/embed/xu2OKAbCuAg?list=PLObIxRf2mAvaiajQg-p28G6VD8BeZ4bRo"
-                    frameborder="0" allowfullscreen></iframe>
-
         </div>
-        <p>Our objective for the first sprint was to create a proof of concept for our project that encapsulated the
-            most basic behavior of the turtle,
-            responding to light. We built a two dimensional cardboard sketch model that would support the few necessary
-            components of such a system: wheels,
-            light sensors, LEDS, and an Arduino. Because the mechanical system for this sprint was meant to be a
-            platform for the electrical and software systems to test on,
-            we chose to create a very fast prototype to get an initial tangible image of what our project could be.
-            Thick cardboard was cut into a base plate the approximate size
-            and shape of what we imagined the final project to be. Wheels were made from the same cardboard, with their
-            edges covered in tape to make a smoother surface.
-            Rectangular cutouts for the wheels were made in the base plate, taking into account the wobbling of the
-            wheel due to its insecure connection to the wheel via hot glue.
-            Holes for the sensors and LEDs were simply poked through the base plate. The video of the working prototype
-            can be found <a href="https://vimeo.com/188361213"> here</a>.</p>
 
-        <br> </br>
-        <br> </br>
-
-
-        <header class="major">
-            <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
-              <span style="font-size: 40px; background-color: #FFFFFF; padding: 0 10px;">
-                Sprint 2 : Like a Spider
-              </span>
-            </div>
-        </header>
-
-        <p>Our next step in Sprint 2 was to develop quadrupedal motion mimicking that of a turtle for our robot.
-            We referenced the movements of the <a href="https://www.youtube.com/watch?v=9dHtW0immKg">Allbot VR408 Robot
-                System</a>, a small spider-looking robot with two degrees of freedom in each leg provided by servos.
-        </p>
-
-        <p>Before we began designing the legs, we learned more about servos and the kind of load they can support. We
-            drew a very simple free body diagram of the connection between the body and a leg of the turtle when the leg
-            is on the ground:</p>
-
-        <p>We ran into problems with finding analog pins that could be used to read the sensors and were not
-            already assigned to another task on the motor shield. Once we realized this problem it was an easy
-            fix to avoid using those analog pins for sensors.</p>
-
-        <header class="major">
-            <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
-              <span style="font-size: 40px; background-color: #FFFFFF; padding: 0 10px;">
-                Sprint 3 : Dive into Turtle Gaits
-              </span>
-            </div>
-        </header>
-
-        <p>We purchased additional sensors and calibrated them for plant care!</p>
-
-        <p>The photoresistors were calibrated as a new way to sense light that would use less space on the
-            breadboard. This allowed for us to measure light from taking the voltage between the photoresistor
-            and a 330 Ohm resistor. </p>
-
-        <p>We added and calibrated a soil moisture sensor by putting it in different wet paper towels. Luckily
-            this gave us a good range of data points so no amplification was necessary.</p>
-
-        <p>We added and calibrated a temperature and humidity sensor. For the sake of this project being indoors
-            the humidity sensor is not nearly as important when compared to the temperature because we do not
-            plan for it to rain inside. The temperature sensor will make sure the plants do not overheat from
-            the sunlight. If it is too hot, the turtle can move into the shade until it cools down. Calibrating
-            this sensor was difficult because there is one output pin for both pieces of data. After a bunch of
-            research we found an example code for this sensor and this worked to properly display our sensor
-            values.</p>
-        <span class="image left"><img src="images/eProcess3.jpg" alt=""/></span>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <!-- add pic captions and sprint 4 stuff -->
-        <img src="images/eProcess4.jpg" alt=""/>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
     </div>
 </section>
+
 <div w3-include-html="footer.html"></div>
 
 </body>
