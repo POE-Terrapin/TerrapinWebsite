@@ -56,7 +56,7 @@
     <div class="container" style="background-color:rgba(170,87,57,1); padding: 5em">
         <header>
             <h2 style="color:white">Our goal:</h2>
-            <p>For the Olin College Principles of Engineering course, we set out to create a mobile terrarium, 
+            <p style="color:white">For the Olin College Principles of Engineering course, we set out to create a mobile terrarium, 
                 shaped like a turtle, which would wander into and out of sunlight to care for the plant on its back.
                 Each step would be autonomous, the choice a combination of where the light was, where obstacles 
                 stood, and other sensory data. Our individual learning goals, ranging from learning more about 
@@ -117,6 +117,22 @@
     </div>
 </section>
 
+    <!-- Three -->
+<section id="three" class="wrapper style2 align-center">
+    <div class="container">
+        <header>
+            <h2>System Diagram</h2>
+            <img src="images/system_diagram.png"/>
+            <p>Above is the final system diagram of Terrapin. An Arduino collects data from multiple sensors and
+                informs a Raspberry Pi, the brain of our system. Based on these readings, an algorithm decides the best
+                direction for the turtle to wander. This 'best' direction is determined based on the light and temperature
+                requirements of the plant contained in the shell. Once decided, the choice is returned to the Arduino, 
+                which actuates motors connected to linkage-based legs. The turtle thus wanders about, taking the best 
+                care of its plant that it can.</p>
+        </header>
+    </div>
+</section>
+    
 <div w3-include-html="footer.html"></div>
 
 </body>
