@@ -52,10 +52,10 @@
 </section>
 
 <!-- One -->
-<section id="one" class="wrapper align-center" style="background-color: palegreen">
-    <div style="background-color:#407213; opacity: 0.8; margin: 0; width: 100%">
-        <div class="container"
-        ">
+<section id="one" class="wrapper style1 align-center">
+    <div style="background-color:rgba(64,114,19,0.3); width: 100%; padding-top:2em; padding-bottom: 2em;">
+
+        <div class="container">
         <header>
             <h2 style="color:white">Our goal:</h2>
 
@@ -109,36 +109,18 @@
 </section>
 
 <!-- Two -->
-<section id="two" class="wrapper style2 align-center">
+<section id="two" class="wrapper style2 align-center" style="background-color: #4dac71">
     <div class="container">
         <header>
-            <h2>Inspiration</h2>
+            <h2 style="color: white;">Inspiration</h2>
             <img src="images/nemos_garden.jpg"/>
 
-            <p>From the Hanging Gardens of Babylon to the urban window box, plants, life, and growth have brought us
+            <p style="color: white">From the Hanging Gardens of Babylon to the urban window box, plants, life, and growth have brought us
                 joy for centuries. This is what one of our members experienced when she attended a talk on the
-                nearly-magical <a href="http://www.nemosgarden.com/">Nemo’s Garden</a>. These underwater biospheres
+                nearly-magical <a style="color: turquoise;" href="http://www.nemosgarden.com/">Nemo’s Garden</a>. These underwater biospheres
                 are filled with thriving plants and stream sensor data to their researchers. And though these are
                 stationary bubbles, plants in a strange, beautiful place inspired a new idea: what about a terrarium
                 that moved and seemed almost as alive as the plants on its back? What about a turtle?</p>
-        </header>
-    </div>
-</section>
-
-<!-- Three -->
-<section id="three" class="wrapper style2 align-center">
-    <div class="container">
-        <header>
-            <h2>System Diagram</h2>
-            <img src="images/system_diagram.png" style="width:100%;"/>
-
-            <p>Above is the final system diagram of Terrapin. An Arduino collects data from multiple sensors and
-                informs a Raspberry Pi, the brain of our system. Based on these readings, an algorithm decides the best
-                direction for the turtle to wander. This 'best' direction is determined based on the light and
-                temperature
-                requirements of the plant contained in the shell. Once decided, the choice is returned to the Arduino,
-                which actuates motors connected to linkage-based legs. The turtle thus wanders about, taking the best
-                care of its plant that it can.</p>
         </header>
     </div>
 </section>
