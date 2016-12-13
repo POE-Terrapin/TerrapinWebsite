@@ -163,7 +163,12 @@
               </span>
                 </div>
             </header>
-            <p>We started off making a prototype of our design. This prototype utilized photodiodes, motors, and LEDs. The photodiodes sensed the light and allowed the robot to move away from shadows. We used op amps to amplify the photodiode signal, giving us a significant difference in the output voltage from shadows and light. The motors moved wheels, allowing our prototype to move forward or backwards. The LEDs indicated which direction the robot was moving. This was to test a method of communicating our robot's state with a viewer. In this case, the state was moving forward or backward.</p>
+            <p>We started off making a prototype of our design. This prototype utilized photodiodes, motors, and LEDs. 
+                The photodiodes sensed the light and allowed the robot to move away from shadows. We used op amps to 
+                amplify the photodiode signal, giving us a significant difference in the output voltage from shadows 
+                and light. The motors moved wheels, allowing our prototype to move forward or backwards. The LEDs 
+                indicated which direction the robot was moving. This was to test a method of communicating our robot's 
+                state with a viewer. In this case, the state was moving forward or backward.</p>
             <p>Image of Photodiodes<span class="image left"><img src="images/eProcess1.jpg" alt=""/></span></p>
             <p>Circuit Schematic for Photodiodes<span class="image right"><img src="images/eProcess2.jpg" alt=""/></span></p>
             <br>
@@ -276,7 +281,10 @@
                 <span class="image center collapsible"><img src="images/sProcess2.png" alt=""/></span>
             </div>
 
-            <p>We did not combine this algorithm with the movement of the legs that the mechanical team made. Instead, because of difficulties with motor shield pins, we switched to using a multiplexer to cycle through sensors, and wrote basic code to switch between which pins on the multiplexer were being read.</p>
+            <p>We did not combine this algorithm with the movement of the legs that the mechanical 
+                team made. Instead, because of difficulties with motor shield pins, we switched to 
+                using a multiplexer to cycle through sensors, and wrote basic code to switch between 
+                which pins on the multiplexer were being read.</p>
 
 
             <div>
@@ -286,14 +294,21 @@
             </div>
 
             <p>We then included IR sensors to check forward and to the right whenever the turtle has to move</p>
-            <p>On the final night, the mechanical subteam wrote control code for a newly fabricated pair of legs, each of which was controlled by two servos (essentially, a femur and a tibia). Both of these servos was given a range of values it would sweep through. Then, based on a flag that indicated if it was the right leg’s turn to move, the legs alternated movement and steps.</p>
+            <p>On the final night, the mechanical subteam wrote control code for a newly fabricated 
+                pair of legs, each of which was controlled by two servos (essentially, a femur and a 
+                tibia). Both of these servos was given a range of values it would sweep through. Then, 
+                based on a flag that indicated if it was the right leg’s turn to move, the legs alternated movement and steps.</p>
 
 
             <span class="image left"><img src="images/sProcess6.jpg" alt=""/></span>
 
             <br><br><br><br><br><br><br><br><br><br><br>
-            <p>In order to mimic realistic movement and keep the turtle stable, the legs had to move at different times and alternate steps. Here, a sloped line indicates the servo sweeping to a new angle. Steeper slopes show faster movement, such as when a leg is lifted to take a step, while the shallow slopes on the femurs show the slow rotation in preparation for the next step.</p>
-            <p>Because of this major change from motor-controlled wheels to a quadruple servo system, integration of the leg control and the basic decision algorithm was not completed during this sprint.</p>
+            <p>In order to mimic realistic movement and keep the turtle stable, the legs had to move at 
+                different times and alternate steps. Here, a sloped line indicates the servo sweeping to 
+                a new angle. Steeper slopes show faster movement, such as when a leg is lifted to take a 
+                step, while the shallow slopes on the femurs show the slow rotation in preparation for the next step.</p>
+            <p>Because of this major change from motor-controlled wheels to a quadruple servo system, integration 
+                of the leg control and the basic decision algorithm was not completed during this sprint.</p>
 
 
         </div>
@@ -313,24 +328,32 @@
                 </div>
             </header>
 
-            <p>At the beginning of this sprint, we planned out the additional sensors we would need and realized that we were going to need more Analog pins on the arduino. To remedy this we utilized a 8-to-1 multiplexer 4051. This uses the arduino digital pins 3, 4, and 5 to select which of the 8 outputs on the multiplexer to send to analog pin 0.</p>
+            <p>At the beginning of this sprint, we planned out the additional sensors we would need and realized 
+                that we were going to need more Analog pins on the arduino. To remedy this we utilized a 8-to-1 
+                multiplexer 4051. This uses the arduino digital pins 3, 4, and 5 to select which of the 8 outputs 
+                on the multiplexer to send to analog pin 0.</p>
 
 
-            <p>Another goal for this sprint was obstacle avoidance, which meant we needed to be able to sense obstacles. For this we added 2 IR sensors. One went on the head pointing forward and the other two was on the right side of the turtle.</p>
+            <p>Another goal for this sprint was obstacle avoidance, which meant we needed to be able to sense 
+                obstacles. For this we added 2 IR sensors. One went on the head pointing forward and the other 
+                two was on the right side of the turtle.</p>
 
 
-            <p>Several of the analog pins we tried to use had already been assigned to tasks on the motor shield, causing interference when the sensors were connected. Once we realized this problem and incorporated the multiplexer, we managed to avoid any more issues tied to this.</p>
+            <p>Several of the analog pins we tried to use had already been assigned to tasks on the motor shield, 
+                causing interference when the sensors were connected. Once we realized this problem and incorporated 
+                the multiplexer, we managed to avoid any more issues tied to this.</p>
 
+<div class="container">
+            <p class="process button collapsor" style="background-color: rgba(98,152,51,1); ">Mechanical Process</p>
 
-                <div class="collapsible">
-                    <header class="major">
-                        <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
-              <span style="font-size: 40px; background-color: #FFFFFF; padding: 0 10px;">
-                Sprint 2 : Like a Spider
-              </span>
-                        </div>
-                    </header>
-
+            <div class="collapsible">
+                <header class="major">
+                    <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+                      <span style="font-size: 40px; background-color: #FFFFFF; padding: 0 10px;">
+                        Sprint 2 : Like a Spider
+                      </span>
+                    </div>
+                </header>
                     <p>Our next step in Sprint 2 was to develop quadrupedal motion mimicking that of a turtle for our
                         robot.
                         We referenced the movements of the <a href="https://www.youtube.com/watch?v=9dHtW0immKg">Allbot
@@ -513,7 +536,7 @@
                 <figure class="fig">
                     <img src="images/mech/s3/sprint_3_linkage.JPG"/>
                     <figcaption>
-                        Caption: A mixture of delrin and hardboard was used for the linkages as we refined the design of
+                        A mixture of delrin and hardboard was used for the linkages as we refined the design of
                         the linkage
                     </figcaption>
                 </figure>
@@ -525,10 +548,15 @@
                     control of the angular position of the foot linkage.</p>
 
                 <figure class="fig">
-                    <img src="images/mech/s3/">
+                    <img src="images/mech/s3/sprint_3_bell_crank_and_motor.jpg">
+                    <figcaption>Design allows legs to turn </figcaption>
                 </figure>
-                Caption: Design allows legs to turn
-                <p><a href="https://www.youtube.com/watch?v=xNuBAAkjFvI">This video shows the integration</a>. </p>
+                
+                <figure class="fig">
+                    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=xNuBAAkjFvI" frameborder="0"
+                            allowfullscreen></iframe>
+                    <figcaption>The integrated system of servo and linkages.</figcaption>
+                </figure>              
 
 
                 <p>Due to the predicted heavy use of this movement, we were worried about friction between the motor
@@ -537,8 +565,12 @@
                     bottom which would in theory rotate more freely on the hardboard. As we saw later, the friction
                     between these parts was not as big of a problem as the vertical movement of the robot with respect
                     to the plate.</p>
+                
+                <figure class="fig">
+                    <img src="images/mech/s3/bad_marble_picture.jpg">
+                    <figcaption>Under the red motor support, you can see a part of the marble popping out </figcaption>
+                </figure>
 
-                Caption: Under the red motor support, you can see a part of the marble popping out
                 <p>The whole sprint was dedicated to pushing for a fully designed turtle to be able to test out every
                     part and iterate if necessary in the next sprint. We started with creating a compartment to house
                     the electronics. This bay would be separated from the plant by a plate which could be easily removed
@@ -547,8 +579,10 @@
                     attach the dome and the plant to the plate and design to be able to remove this entire system to
                     access the electronics bay.</p>
 
-                Caption: Final CAD
-
+                <figure class="fig">
+                    <img src="images/mech/s3/hero_image.jpg">
+                    <figcaption>Final CAD </figcaption>
+                </figure>
 
                 <p>The electronics bay consists of a wall that follows the perimeter of the turtle base plate and screws
                     into its bottom. It’s height was dictated at first by the height of the Arduino and the motor
@@ -560,7 +594,12 @@
                     cutout in CAD was not much smaller, and we stayed with our original motors. Cutouts for future
                     wiring to the head and tail were also made.</p>
 
-                Caption: Electronics Bay
+                
+                <figure class="fig">
+                    <img src="images/mech/s3/ebay_shell.jpg">
+                    <figcaption>Electronics Bay </figcaption>
+                </figure>
+                
                 <p>Two of the IR sensors were also to be mounted in the shell. We wanted to preserve the aesthetic of
                     the turtle, so the sensors would need to be embedded. This was an extremely difficult task because
                     the shell is quite thick with limited space, and the sensors needed to be pointing at an angle to
@@ -568,7 +607,12 @@
                     to mount them so that there would be no interference from the shell and the moving leg. For this
                     reason, we ultimately decided to mount them underneath the base plate, at the head.</p>
 
-                Caption: Head
+                
+                <figure class="fig">
+                    <img src="images/mech/s3/ir_sensors_underneath.jpg">
+                    <figcaption>Head </figcaption>
+                </figure>
+                
                 <p>The removeable plate went through two of its three iterations. At first, it was designed to slide
                     laterally into the top of the electronics bay. However, upon consideration of the fabrication
                     process, we could not easily cut the piece we needed. Instead of sliding, the plate would lift up
@@ -582,8 +626,16 @@
                     used tape to secure the magnets. Although they seemed an elegant solution, we scrapped the magnets
                     in favor of a simpler and more reliable attachment in the next sprint.</p>
 
-                Caption: Slide Plate, A magnet was taped into a pocket in both the slide plate and the electronics bay
-                shell
+                <figure class="fig">
+                    <img src="images/mech/s3/sprint_3_slide_plate.jpg">
+                    <figcaption>Slide Plate </figcaption>
+                </figure>
+                <figure class="fig">
+                    <img src="images/mech/s3/sprint_3_magnet.jpg">
+                    <figcaption>A magnet was taped into a pocket in both the slide plate and the electronics bay
+                shell </figcaption>
+                </figure>
+                
                 <p>We upgraded the caster wheels supporting the turtle to omnidirectional ones to allow for a larger
                     range of motion. We only implemented linear movement, front and back, in Sprint 2 and therefore did
                     not need the supporting wheels to rotate. Sprint 3 would integrate obstacle avoidance which requires
@@ -601,7 +653,10 @@
                     to lessen friction between the motor mount and the base plate was falling out and proving
                     useless.</p>
 
-                Caption: Foot
+                <figure class="fig">
+                    <img src="images/mech/s3/sprint_3_front_foot.jpg">
+                    <figcaption>Foot </figcaption>
+                </figure>
 
 
                 <p>Initial solutions to the problem were to speed up the motor, clamp the shell and plate to the base
@@ -609,8 +664,13 @@
                     constraint on the motor. We also put more weight on the front of the robot to increase the friction
                     on the foot. We also attached a foot made out of layers of hardboard to lengthen the linkage and to
                     increase the contact area with the ground. These changes helped the turtle translate more of the
-                    push into lateral motion, but not enough to reliably prope it forwards, as seen in <a href="https://www.youtube.com/watch?v=Ap4fOlc7e6o&feature=youtu.be">this video</a>.
+                    push into lateral motion, but not enough to reliably propel it forwards.
                 </p>
+                <figure class="fig">
+                    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Ap4fOlc7e6o&feature=youtu.be" frameborder="0"
+                            allowfullscreen></iframe>
+                    <figcaption>The updated motion.</figcaption>
+                </figure> 
 
                 <p>Instead of testing on a smooth surface, we tried the turtle on the rough side of some hardboard. This
                     made an immense difference: https://www.youtube.com/watch?v=lGmxkizyCns After some time, however,
@@ -697,6 +757,11 @@
                     and IR sensors. We printed test parts to make sure that the sensors would fit into the holes and did
                     not have interference from the walls in which they would be embedded. To make powering the turtle on
                     and off easier, we embedded an easily accessible switch in the tail.</p>
+                
+                <figure class="fig">
+                    <img src="images/mech/s4/full_assembly_side.jpg">
+                    <figcaption>The final, full assembly</figcaption>
+                </figure>
 
 
                 <p>To finish the design, a mold for the dome was created. We wanted a transparent, ellipsoidal shell for
@@ -705,7 +770,13 @@
                     machinable foam. The first pass failed because our sheet of acrylic was too small. The second dome
                     turned out well for testing purposes, but was too foggy due to inadequate filing of the dome. The
                     next iteration will be made on a smoother dome for better transparency.</p>
-
+<div align="center">
+ <img src="images/mech/s4/mold.jpg" alt="" align="right" style="float:right"/>
+ <img src="images/mech/s4/dome_cut.jpg" alt="" align="left" style="float:left" />
+ <div id="content" align="center"> 
+     <img src="images/mech/s4/mold_out.jpg" alt="" align="center" />
+ </div>
+ </div>
                 (A mold was made out of machinable foam over which a sheet of PETG plastic was vacuum formed).
 
 
@@ -727,7 +798,10 @@
                     remove the dome and plant, it simply needs to be lifted. This modification also allowed us to laser
                     cut the plate out of hardboard and match it with the base plate for a better look.</p>
 
-                Caption: CAD of the shell
+                <figure class="fig">
+                    <img src="images/mech/s3/shell_with_stakes.jpg">
+                    <figcaption>CAD of the shell</figcaption>
+                </figure>
 
 
                 <p>To put more weight onto the front of the turtle, the front caster wheel was made smaller to make the
@@ -742,7 +816,10 @@
                     designed the turtle with possibility for later modifications in mind, a decision which allows us to
                     confidently put the back two legs on the back burner.</p>
 
-                Caption: The front caster wheel was reduced in size to put more weight onto the front legs
+                <figure class="fig">
+                    <img src="images/mech/s3/sprint_3_bottom_wheels.jpg">
+                    <figcaption>The front caster wheel was reduced in size to put more weight onto the front legs</figcaption>
+                </figure>
 
 
                 <p>To make the robot look like a turtle, the electronics bay is being covered in epoxy, fiberglass, and
