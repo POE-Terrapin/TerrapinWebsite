@@ -88,19 +88,19 @@
 <div w3-include-html="header.html"></div>
 
 <div style="width: 100%">
-    <div class="button slide" style="background-color: rgba(128,128,0,0.3);width:25%">
+    <div class="button slide" style="background-color: rgba(140,190,95,0.6);width:25%">
         Sprint 1
     </div>
 
-    <div class="button slide" style="background-color: rgba(0,128,128,0.3); width:25%">
+    <div class="button slide" style="background-color: rgba(189,94,124,0.6); width:25%">
         Sprint 2
     </div>
 
-    <div class="button slide" style="background-color: rgba(128,0,128,0.3); width:25%">
+    <div class="button slide" style="background-color: rgba(73,147,113,0.6);width:25%">
         Sprint 3
     </div>
 
-    <div class="button slide" style="background-color: rgba(128,0,128,0.3); width:25%">
+    <div class="button slide" style="background-color: rgba(212,135,106,0.6); width:25%">
         Sprint 4
     </div>
 </div>
@@ -111,7 +111,7 @@
 
 
     <div class="container">
-        <p class="process button collapsor">Software Process</p>
+        <p class="process button collapsor" style="background-color: rgba(39,117,82,0.6); ">Software Process</p>
 
         <div class="collapsible">
             <header class="major">
@@ -147,24 +147,6 @@
             </div>
             <br><br>
 
-            <p>Sketch code focused on staying in light:
-            <ul>
-                <li>Used 2 photodiodes to detect light or shadow above</li>
-                <li>Calibration of these sensors tuned by hand, set to single value</li>
-                <li>Controlled wheel motors to move along a single axis</li>
-                <li>Moved until both sensors reported values above calibration value</li>
-                <li>Basic eye LED control</li>
-            </ul>
-            </p>
-
-            <p>Some issues:
-            <ul>
-                <li>Did not move if both sensors reported shade</li>
-                <li>1-axis movement</li>
-                <li>No awareness of surroundings</li>
-            </ul>
-            </p>
-
 
         </div>
 
@@ -172,7 +154,7 @@
 
 
     <div class="container">
-        <p class="process button collapsor">Electrical Process</p>
+        <p class="process button collapsor" style="background-color: rgba(170,87,57,0.6); ">Electrical Process</p>
 
         <div class="collapsible">
             <header class="major">
@@ -182,15 +164,9 @@
               </span>
                 </div>
             </header>
-            <p>We started off making a prototype of our design. This prototype utilized photodiodes, motors, and
-                LEDs. The photodiodes were used to sense the light and allowed the robot to move away from shadows.
-                To amplify the signal from the photodiodes we utilized op amps. This gave us a significant
-                difference in the output voltage from shadows and light. The motors moved wheels so our prototype
-                can move around. The LEDs showed which direction the robot was moving. This was to test a method of
-                communicating our robot's state with a viewer. In this case the state was moving forward or
-                backward.</p>
-            <span class="image left"><img src="images/eProcess1.jpg" alt=""/></span>
-            <span class="image right"><img src="images/eProcess2.jpg" alt=""/></span>
+            <p>We started off making a prototype of our design. This prototype utilized photodiodes, motors, and LEDs. The photodiodes sensed the light and allowed the robot to move away from shadows. We used op amps to amplify the photodiode signal, giving us a significant difference in the output voltage from shadows and light. The motors moved wheels, allowing our prototype to move forward or backwards. The LEDs indicated which direction the robot was moving. This was to test a method of communicating our robot's state with a viewer. In this case, the state was moving forward or backward.</p>
+            <p>Image of Photodiodes<span class="image left"><img src="images/eProcess1.jpg" alt=""/></span></p>
+            <p>Circuit Schematic for Photodiodes<span class="image right"><img src="images/eProcess2.jpg" alt=""/></span></p>
             <br> </br>
             <br> </br>
             <br> </br>
@@ -209,8 +185,7 @@
 
 
         <div class="container">
-            <p class="process button collapsor">Mechanical Process</p>
-
+            <p class="process button collapsor"  style="background-color: rgba(98,152,51,0.6); ">Mechanical Process</p>
             <div class="collapsible">
                 <header class="major">
                     <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
@@ -256,8 +231,7 @@
 
 
     <div class="container">
-        <p class="process button collapsor">Software Process</p>
-
+        <p class="process button collapsor"style="background-color: rgba(39,117,82,0.6); ">Software Process</p>
         <div class="collapsible">
             <header class="major">
                 <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
@@ -303,13 +277,8 @@
                 <span class="image center collapsible"><img src="images/sProcess2.png" alt=""/></span>
             </div>
 
-            <p>We didn’t quite manage to combine this algorithm with the movement of the legs that the mechanical team
-                made,
-                although control code to move the servo-based legs was written. Instead, this time was spent struggling
-                with
-                the pins on the motor shield. Due to the difficulties there, we switched to using a multiplexer to cycle
-                through sensors, and wrote basic code to switch between which pins on the multiplexer were being
-                read.</p>
+            <p>We did not combine this algorithm with the movement of the legs that the mechanical team made. Instead, because of difficulties with motor shield pins, we switched to using a multiplexer to cycle through sensors, and wrote basic code to switch between which pins on the multiplexer were being read.</p>
+
 
             <div>
                 <p class="process button collapsor">CODE SNIPPET: method used to select a pin from the IR sensor.</p>
@@ -318,61 +287,41 @@
             </div>
 
             <p>We then included IR sensors to check forward and to the right whenever the turtle has to move</p>
-            <ul>
-                <li>IR sensors normalized, which was sort of useless</li>
-                <li>Motion undergoes a decision algorithm:</li>
-                <ul>
-                    <li type="circle">If shade in front, move backwards</li>
-                    <li type="circle">If shade over back sensor, check forward IR</li>
-                    <ul>
-                        <li type="i">If nothing in front, go forward</li>
-                        <li type="i">If something in front, check right IR</li>
-                        <ul>
-                            <li type="square">If nothing to right, turn right</li>
-                            <li type="square">If something to right, turn left</li>
-                        </ul>
-                    </ul>
-                </ul>
-                <li>Only moves if shade over part</li>
-                <li>Pins starting to run low, particularly with motor shield interference, so added a multiplexer</li>
-                <li>Function to choose the pin being looked at</li>
-            </ul>
+            <p>On the final night, the mechanical subteam wrote control code for a newly fabricated pair of legs, each of which was controlled by two servos (essentially, a femur and a tibia). Both of these servos was given a range of values it would sweep through. Then, based on a flag that indicated if it was the right leg’s turn to move, the legs alternated movement and steps.</p>
 
-            <p>Mechanical subteam wrote up control code for leg movemen; integration from wheel to leg is not yet
-                completed.</p>
+
+            <span class="image left"><img src="images/sProcess6.jpg" alt=""/></span>
+
+            <br><br><br><br><br><br><br><br><br><br><br>
+            <p>In order to mimic realistic movement and keep the turtle stable, the legs had to move at different times and alternate steps. Here, a sloped line indicates the servo sweeping to a new angle. Steeper slopes show faster movement, such as when a leg is lifted to take a step, while the shallow slopes on the femurs show the slow rotation in preparation for the next step.</p>
+            <p>Because of this major change from motor-controlled wheels to a quadruple servo system, integration of the leg control and the basic decision algorithm was not completed during this sprint.</p>
+
+
         </div>
+    </div>
 
 
-        <div class="container">
-            <p class="process button collapsor">Electrical Process</p>
 
-            <div class="collapsible">
-                <header class="major">
-                    <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+    <div class="container">
+        <p class="button collapsor process"  style="background-color: rgba(170,87,57,0.6); ">Electrical Process</p>
+
+        <div class="collapsible">
+            <header class="major">
+                <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
               <span style="font-size: 40px; background-color: #FFFFFF; padding: 0 10px;">
                 Sprint 2
               </span>
-                    </div>
-                </header>
+                </div>
+            </header>
 
-                <p>At the beginning of this sprint we planned out the additional sensors we would need and realized that
-                    we were going to need more Analog pins on the arduino. To remedy this we utilized a 8-to-1
-                    multiplexer 4051. This uses the arduino digital pins 3, 4, and 5 to select which of the 8 outputs on
-                    the multiplexer to send to analog pin 0.</p>
-
-                <p>Another goal for this sprint was obstacle avoidance. Therefore we needed to be able to sense
-                    obstacles. For this we added 3 IR sensors. One went on the head pointing forward and the other two
-                    were on the sides.</p>
-
-                <p>We ran into problems with finding analog pins that could be used to read the sensors and were not
-                    already assigned to another task on the motor shield. Once we realized this problem it was an easy
-                    fix to avoid using those analog pins for sensors.</p>
-
-            </div>
+            <p>At the beginning of this sprint, we planned out the additional sensors we would need and realized that we were going to need more Analog pins on the arduino. To remedy this we utilized a 8-to-1 multiplexer 4051. This uses the arduino digital pins 3, 4, and 5 to select which of the 8 outputs on the multiplexer to send to analog pin 0.</p>
 
 
-            <div class="container">
-                <p class="process button collapsor">Mechanical Process</p>
+            <p>Another goal for this sprint was obstacle avoidance, which meant we needed to be able to sense obstacles. For this we added 2 IR sensors. One went on the head pointing forward and the other two was on the right side of the turtle.</p>
+
+
+            <p>Several of the analog pins we tried to use had already been assigned to tasks on the motor shield, causing interference when the sensors were connected. Once we realized this problem and incorporated the multiplexer, we managed to avoid any more issues tied to this.</p>
+
 
                 <div class="collapsible">
                     <header class="major">
@@ -400,7 +349,26 @@
                         already assigned to another task on the motor shield. Once we realized this problem it was an
                         easy
                         fix to avoid using those analog pins for sensors.</p>
+
                 </div>
+            </header>
+
+            <p>At the beginning of this sprint we planned out the additional sensors we would need and realized that
+                we were going to need more Analog pins on the arduino. To remedy this we utilized a 8-to-1
+                multiplexer 4051. This uses the arduino digital pins 3, 4, and 5 to select which of the 8 outputs on
+                the multiplexer to send to analog pin 0.</p>
+
+            <p>Another goal for this sprint was obstacle avoidance. Therefore we needed to be able to sense
+                obstacles. For this we added 3 IR sensors. One went on the head pointing forward and the other two
+                were on the sides.</p>
+
+            <p>We ran into problems with finding analog pins that could be used to read the sensors and were not
+                already assigned to another task on the motor shield. Once we realized this problem it was an easy
+                fix to avoid using those analog pins for sensors.</p>
+
+        </div>
+    </div>
+
 </section>
 
 
@@ -408,7 +376,8 @@
 
 
     <div class="container">
-        <p class="process button collapsor">Software Process</p>
+        <p class="process button collapsor" style="background-color: rgba(39,117,82,0.6);">Software Process</p>
+
 
         <div class="collapsible">
             <header class="major">
@@ -420,7 +389,7 @@
             </header>
             <p>This sprint was broken into pieces by Thanksgiving break. During the first part, we integrated the
                 movement
-                code from the previous sprint with the decision algorithm, as well as wrote code to allow for easy
+                code from the previous sprint with the decision algorithm, as well as wrote code to allow for easyf
                 testing
                 of sensors. After the break was done, we made a quick pivot from a purely Arduino based system to
                 communication between a Raspberry Pi and the Arduino. This was in order to facilitate future
@@ -454,17 +423,7 @@
                         class="image center collapsible"><img src="images/sProcess5.png" alt=""/></span>
             </div>
 
-            <ul>
-                <li>Combined leg control with previous movement control loop</li>
-                <li>Constant movement except under certain conditions</li>
-                <li>Sensor testing script written (unused)</li>
-                <li>Added Raspberry Pi for easier data processing</li>
-                <li>Raspberry Pi processes, sends data back to Arduino; Arduino controls movement</li>
-                <li>Logging of sensor values to CSV added</li>
-                <li>Light and IR sensors self-calibrating</li>
-                <li>Turtle no longer moves backwards</li>
-                <li>Code for moisture sensor and temperature sensor incorporated, sensors not attached</li>
-            </ul>
+
 
 
         </div>
@@ -473,8 +432,7 @@
 
 
     <div class="container">
-        <p class="process button collapsor">Electrical Process</p>
-
+        <p class="process button collapsor"  style="background-color: rgba(170,87,57,0.6); ">Electrical Process</p>
         <div class="collapsible">
             <header class="major">
                 <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
@@ -486,21 +444,15 @@
 
             <p>We purchased additional sensors and calibrated them for plant care!</p>
 
-            <p>The photoresistors were calibrated as a new way to sense light that would use less space on the
-                breadboard. This allowed for us to measure light from taking the voltage between the photoresistor
-                and a 330 Ohm resistor. </p>
+            <p>The photoresistors were calibrated as a more efficient way to sense light, freeing space on the breadboard for other sensors. This allowed for us to measure light by taking the voltage between the photoresistor and a 330 Ohm resistor. </p>
 
-            <p>We added and calibrated a soil moisture sensor by putting it in different wet paper towels. Luckily
-                this gave us a good range of data points so no amplification was necessary.</p>
 
-            <p>We added and calibrated a temperature and humidity sensor. For the sake of this project being indoors
-                the humidity sensor is not nearly as important when compared to the temperature because we do not
-                plan for it to rain inside. The temperature sensor will make sure the plants do not overheat from
-                the sunlight. If it is too hot, the turtle can move into the shade until it cools down. Calibrating
-                this sensor was difficult because there is one output pin for both pieces of data. After a bunch of
-                research we found an example code for this sensor and this worked to properly display our sensor
-                values.</p>
-            <span class="image left"><img src="images/eProcess3.jpg" alt=""/></span>
+            <p>We added and calibrated a soil moisture sensor by testing it in paper towels dampened with varying amounts of water. Fortunately, this gave us a good range of data points so no amplification was necessary.</p>
+
+
+            <p>We also incorporated a temperature and humidity sensor. Because of a change in scope of our project which moved the final product from outdoors to indoors, the humidity sensor was of marginal importance. However, adding the temperature sensor inside the shell will ensure the plants do not overheat due to sunlight and greenhouse effects. If it is too hot, the turtle can move into the shade until it cools down. Calibrating this sensor was difficult, as both pieces of data were relayed through a single output pin. After extended research, we found an example code for this sensor and were able to properly display our sensor values.</p>
+
+            <p>Photo of Sprint 3 Circuit Being Made</p><span class="image left"><img src="images/eProcess3.jpg" alt=""/></span></p>
             <br></br>
             <br></br>
             <br></br>
@@ -508,12 +460,12 @@
             <br></br>
             <br></br>
             <br></br>
-            <img src="images/eProcess4.jpg" alt=""/>
+            <p>Sprint 3 Circuit Schematic<img src="images/eProcess4.jpg" alt=""/></p>
         </div>
 
 
         <div class="container">
-            <p class="process button collapsor">Mechanical Process</p>
+            <p class="process button collapsor" style="background-color: rgba(98,152,51,0.6); ">Mechanical Process</p>
 
             <div class="collapsible">
                 <header class="major">
@@ -674,57 +626,20 @@
 
 
     <div class="container">
-        <p class="process button collapsor">Software Process</p>
+        <p class="process button collapsor" style="background-color: rgba(39,117,82,0.6); ">Software Process</p>
 
         <div class="collapsible">
             <header class="major">
                 <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
               <span style="font-size: 40px; background-color: #FFFFFF; padding: 0 10px;">
-                Sprint 3
+                Sprint 4
               </span>
                 </div>
             </header>
-            <p>This sprint was broken into pieces by Thanksgiving break. During the first part, we integrated the
-                movement
-                code from the previous sprint with the decision algorithm, as well as wrote code to allow for easy
-                testing
-                of sensors. After the break was done, we made a quick pivot from a purely Arduino based system to
-                communication between a Raspberry Pi and the Arduino. This was in order to facilitate future
-                development,
-                such as a more intelligent decision algorithm and incorporate web-streaming of the data.</p>
-
-            <p>One of the other main changes was switching from only moving when one of the sensors registered shade to
-                constant motion, and both the photodiodes and the IR sensors became self-calibrating, which meant we had
-                to
-                assume the turtle was started up in ideal circumstances for that initial read. Data was logged to a CSV,
-                and
-                the turtle no longer moved backwards, due to realism and the linkages of the legs.</p>
-
-            <p>Code for a temperature sensor and a soil moisture sensor were also added, with a ‘seeking shade’ setting
-                that
-                looks for shade to rest in, but these were not tied to actual sensors.</p>
-
-            <div>
-                <p class="process button collapsor">CODE SNIPPET: Raspberry Pi main loop, which sends directions to
-                    Serial</p>
-                <span
-                        class="image center collapsible"><img
-                        src="images/sProcess4.png" alt=""/></span>
-            </div>
-
-
-            <ul>
-                <li>Combined leg control with previous movement control loop</li>
-                <li>Constant movement except under certain conditions</li>
-                <li>Sensor testing script written (unused)</li>
-                <li>Added Raspberry Pi for easier data processing</li>
-                <li>Raspberry Pi processes, sends data back to Arduino; Arduino controls movement</li>
-                <li>Logging of sensor values to CSV added</li>
-                <li>Light and IR sensors self-calibrating</li>
-                <li>Turtle no longer moves backwards</li>
-                <li>Code for moisture sensor and temperature sensor incorporated, sensors not attached</li>
-            </ul>
-
+            <p>This sprint was largely focused on making the mechanical and aesthetic sides of the turtle the best they
+                could be. Due to this, there was little change in the software. One decision was that the turtle would
+                self-calibrate its sensors, assuming that it started in ideal conditions. We also added RGB LED control for
+                the eyes, so that we could be alerted if the moisture in the soil got too low.</p>
 
         </div>
 
@@ -732,53 +647,31 @@
 
 
     <div class="container">
-        <p class="process button collapsor">Electrical Process</p>
+        <p class="process button collapsor"  style="background-color: rgba(170,87,57,0.6); ">Electrical Process</p>
 
         <div class="collapsible">
             <header class="major">
                 <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
               <span style="font-size: 40px; background-color: #FFFFFF; padding: 0 10px;">
-                Sprint 3
+                Sprint 4
               </span>
                 </div>
             </header>
 
-            <p>We purchased additional sensors and calibrated them for plant care!</p>
+            <p>The goal this sprint was to clean up the circuit and decrease the volume taken up by the electronics, so that it could fit inside the electronics bay in the turtle’s ‘stomach’. To do this, we downsized to a smaller breadboard and later a protoboard. All wires were cut to length, both decreasing the space needed and cleaning up the circuit.</p>
 
-            <p>The photoresistors were calibrated as a new way to sense light that would use less space on the
-                breadboard. This allowed for us to measure light from taking the voltage between the photoresistor
-                and a 330 Ohm resistor. </p>
+            <p>In addition to this, we added buttons to the feet, an on/off switch, a raspberry pi, and an accelerometer. The buttons complete a circuit when depressed, providing the Arduino pin with 5 volts, and break the circuit when released. This allowed us to sense when a foot was on the ground, helping us control the gait of the turtle. The accelerometer was added for later data-streaming value. </p>
 
-            <p>We added and calibrated a soil moisture sensor by putting it in different wet paper towels. Luckily
-                this gave us a good range of data points so no amplification was necessary.</p>
+            <p>Photo of Sprint 4 Circuit</p><span class="image left"><img src="images/eProcess5.jpg" alt=""/></span></p>
 
-            <p>We added and calibrated a temperature and humidity sensor. For the sake of this project being indoors
-                the humidity sensor is not nearly as important when compared to the temperature because we do not
-                plan for it to rain inside. The temperature sensor will make sure the plants do not overheat from
-                the sunlight. If it is too hot, the turtle can move into the shade until it cools down. Calibrating
-                this sensor was difficult because there is one output pin for both pieces of data. After a bunch of
-                research we found an example code for this sensor and this worked to properly display our sensor
-                values.</p>
-            <span class="image left"><img src="images/eProcess3.jpg" alt=""/></span>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <!-- add pic captions and sprint 4 stuff -->
-            <img src="images/eProcess4.jpg" alt=""/>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <p>Sprint 4 Circuit Schematic<img src="images/eProcess6.png" alt=""/></p>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
 
 
         <div class="container">
-            <p class="process button collapsor">Mechanical Process</p>
-
+            <p class="process button collapsor" style="background-color: rgba(98,152,51,0.6);">Mechanical Process</p>
             <div class="collapsible">
                 <header class="major">
                     <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
@@ -851,7 +744,6 @@
                     around with the look of the fabric.</p>
             </div>
         </div>
-
     </div>
 </section>
 
