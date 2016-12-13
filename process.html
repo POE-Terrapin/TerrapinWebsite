@@ -28,16 +28,6 @@
         .process:hover {
             background-color: firebrick;
         }
-
-        .fig {
-            width: 100%;
-            text-align: center;
-        }
-
-        .fig > img {
-            width: 20%
-        }
-
     </style>
     <noscript>
         <link rel="stylesheet" href="css/skel.css"/>
@@ -50,6 +40,7 @@
         var slideIndex = 0;
         var maxSlides;
         var wrapper;
+        var cols = ['rgba(140,190,95,1)', 'rgba(189,94,124,1)', 'rgba(73,147,113,1)', 'rgba(212,135,106,1)'];
 
         function posMod(a, b) {
             return ((a % b) + b) % b
@@ -70,7 +61,12 @@
 
             $("div.slide").click(function () {
                 var idx = $(this).index();
+                var col = $(this).css('background-color');
+                $("body").css('border-color',col);
+                console.log(col);
+
                 showSlide(idx);
+
             });
 
             $(".collapsible").hide();
@@ -82,7 +78,7 @@
 
     </script>
 </head>
-<body>
+<body style="border-width: medium; border-color: white;">
 
 <!-- Header -->
 <div w3-include-html="header.html"></div>
@@ -352,54 +348,42 @@
                 causing interference when the sensors were connected. Once we realized this problem and incorporated
                 the multiplexer, we managed to avoid any more issues tied to this.</p>
 
-            <div class="container">
-                <p class="process button collapsor" style="background-color: rgba(98,152,51,1); ">Mechanical Process</p>
 
-                <div class="collapsible">
-                    <header class="major">
-                        <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+        </div>
+        <div class="container">
+            <p class="process button collapsor" style="background-color: rgba(98,152,51,1); ">Mechanical Process</p>
+
+            <div class="collapsible">
+                <header class="major">
+                    <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
                       <span style="font-size: 40px; background-color: #FFFFFF; padding: 0 10px;">
                         Sprint 2 : Like a Spider
                       </span>
-                        </div>
-                    </header>
-                    <p>Our next step in Sprint 2 was to develop quadrupedal motion mimicking that of a turtle for our
-                        robot.
-                        We referenced the movements of the <a href="https://www.youtube.com/watch?v=9dHtW0immKg">Allbot
-                            VR408 Robot System</a>,
-                        a small spider-looking robot with two degrees of freedom in each leg provided by servos.
-                    </p>
-
-                    <p>Before we began designing the legs, we learned more about servos and the kind of load they can
-                        support. We
-                        drew a very simple free body diagram of the connection between the body and a leg of the turtle
-                        when the leg
-                        is on the ground:</p>
-
-                    <p>We ran into problems with finding analog pins that could be used to read the sensors and were not
-                        already assigned to another task on the motor shield. Once we realized this problem it was an
-                        easy
-                        fix to avoid using those analog pins for sensors.</p>
-
-                </div>
+                    </div>
                 </header>
+                <p>Our next step in Sprint 2 was to develop quadrupedal motion mimicking that of a turtle for our
+                    robot.
+                    We referenced the movements of the <a href="https://www.youtube.com/watch?v=9dHtW0immKg">Allbot
+                        VR408 Robot System</a>,
+                    a small spider-looking robot with two degrees of freedom in each leg provided by servos.
+                </p>
 
-                <p>At the beginning of this sprint we planned out the additional sensors we would need and realized that
-                    we were going to need more Analog pins on the arduino. To remedy this we utilized a 8-to-1
-                    multiplexer 4051. This uses the arduino digital pins 3, 4, and 5 to select which of the 8 outputs on
-                    the multiplexer to send to analog pin 0.</p>
-
-                <p>Another goal for this sprint was obstacle avoidance. Therefore we needed to be able to sense
-                    obstacles. For this we added 3 IR sensors. One went on the head pointing forward and the other two
-                    were on the sides.</p>
+                <p>Before we began designing the legs, we learned more about servos and the kind of load they can
+                    support. We
+                    drew a very simple free body diagram of the connection between the body and a leg of the turtle
+                    when the leg
+                    is on the ground:</p>
 
                 <p>We ran into problems with finding analog pins that could be used to read the sensors and were not
-                    already assigned to another task on the motor shield. Once we realized this problem it was an easy
+                    already assigned to another task on the motor shield. Once we realized this problem it was an
+                    easy
                     fix to avoid using those analog pins for sensors.</p>
 
             </div>
-        </div>
 
+
+        </div>
+    </div>
 </section>
 
 
