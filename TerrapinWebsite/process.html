@@ -380,17 +380,47 @@
             <header class="major">
                 <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
               <span style="font-size: 40px; background-color: #FFFFFF; padding: 0 10px;">
-                Sprint 4
+                Sprint 3
               </span>
                 </div>
             </header>
-            <p>This sprint was largely focused on making the mechanical and aesthetic sides of the turtle the best they
-                could be. Due to this, there was little change in the software. One decision was that the turtle would
-                self-calibrate its sensors, assuming that it started in ideal conditions. We also added RGB LED control for
-                the eyes, so that we could be alerted if the moisture in the soil got too low.</p>
+            <p>This sprint was broken into pieces by Thanksgiving break. During the first part, we integrated the movement
+                code from the previous sprint with the decision algorithm, as well as wrote code to allow for easy testing
+                of sensors. After the break was done, we made a quick pivot from a purely Arduino based system to
+                communication between a Raspberry Pi and the Arduino. This was in order to facilitate future development,
+                such as a more intelligent decision algorithm and incorporate web-streaming of the data.</p>
+
+            <p>One of the other main changes was switching from only moving when one of the sensors registered shade to
+                constant motion, and both the photodiodes and the IR sensors became self-calibrating, which meant we had to
+                assume the turtle was started up in ideal circumstances for that initial read. Data was logged to a CSV, and
+                the turtle no longer moved backwards, due to realism and the linkages of the legs.</p>
+
+            <p>Code for a temperature sensor and a soil moisture sensor were also added, with a ‘seeking shade’ setting that
+                looks for shade to rest in, but these were not tied to actual sensors.</p>
+
+            <div>
+                <p class="button collapsor">CODE SNIPPET: Raspberry Pi main loop, which sends directions to Serial</p>
+                <span
+                        class="image center collapsible"><img
+                        src="images/sProcess4.png" alt=""/></span>
+            </div>
+
+            <div>
+                <p class="button collapsor">CODE SNIPPET: Arduino control sequence, writing to and receiving directions from serial/Raspberry Pi</p>
+                <span
+                        class="image center collapsible"><img src="images/sProcess5.png" alt=""/></span>
+            </div>
+
             <ul>
-                <li>Decided turtle would calibrate by starting in desired conditions and taking readings from sensors</li>
-                <li>Added RGB LED control</li>
+                <li>Combined leg control with previous movement control loop</li>
+                <li>Constant movement except under certain conditions</li>
+                <li>Sensor testing script written (unused)</li>
+                <li>Added Raspberry Pi for easier data processing</li>
+                <li>Raspberry Pi processes, sends data back to Arduino; Arduino controls movement</li>
+                <li>Logging of sensor values to CSV added</li>
+                <li>Light and IR sensors self-calibrating</li>
+                <li>Turtle no longer moves backwards</li>
+                <li>Code for moisture sensor and temperature sensor incorporated, sensors not attached</li>
             </ul>
 
 
@@ -436,12 +466,7 @@
             <br></br>
             <br></br>
             <br></br>
-            <!-- add pic captions and sprint 4 stuff -->
             <img src="images/eProcess4.jpg" alt=""/>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
         </div>
 
 
