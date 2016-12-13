@@ -34,14 +34,25 @@
 				<div class="container">
 
 					<header class="major">
-						<h2>Generic</h2>
-						<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+						<h2>Final Electrical System</h2>
+
 					</header>
 
-					<a href="#" class="image fit"><img src="images/pic08.jpg" alt="" /></a>
-					<p>Vis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan.</p>
-					<p>Amet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan commodo odio cubilia ac eu interdum placerat placerat arcu commodo lobortis adipiscing semper ornare pellentesque.</p>
-					<p>Amet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet blandit adipiscing arcu ante.</p>
+					<p>For this project it is important that the robot can sense its environment to assist in plant care. To do this many sensors were used. We are using an Arduino to power and control the majority of the circuit. The temperature component of a temperature and humidity sensor is utilized to make sure the plants are not getting too hot. There is a soil moisture sensor so it knows if the plant’s soil is too dry and needs to be watered. We have photoresistors to sense the light the plants are getting so they can receive the proper amount of sunlight. We included IR sensors so the robot can be aware of its surroundings and not collide with other objects. There are buttons on the bottom of the feet to sense if the foot is making contact with the ground. There is a 3 axis accelerometer to make tell if the robot is flipped over. There is also a switch in digital in/out pin 5 to allow us a method of lowering our power consumption by turning off certain components.</p>
+
+					<p>These sensors are all powered at 5V and grounded using the power and ground from the arduino. The humidity, temperature, soil moisture, and IR sensors have a signal wire that goes to a port on the multiplexer. The photoresistors are wired in series with another resistor (330 Ohm) and the voltage is taken between these two resistors to know if the plants are receiving sunlight or ambient light. This reading also goes into pins on the multiplexer. </p>
+
+					<p>We have 2 RGB LEDs as eyes. These are wired in parallel with each other so both eyes will always be the same color. The greens are getting power from the arduino's digital in/out pin 12, have a 1K Ohm resistor in series with them, and are grounded to thee arduino. The red and blue are set up similarly but with pin 7 and 11 respectively. </p>
+					<p>The servos are used to turn the turtle’s legs. These are also powered and grounded from the arduino with 5V. The signal for these come from digital pins 6 and 10 because they are capable of outputting PWM. The motors are getting powered and controlled by the motor controller.</p>
+					<p>Lastly, A Raspberry Pi is being used so data from the robot can be displayed on a website and allow users to view the state of the robot.</p>
+					<p>Photo of Sprint 4 Circuit</p><span class="image left"><img src="images/eProcess5.jpg" alt=""/></span></p>
+					<br><br><br><br>
+					<br><br><br><br><br><br><br><br><br><br><br><br>
+
+					<p>Sprint 4 Circuit Schematic<img src="images/eProcess6.png" alt=""/></p>
+					<br><br><br><br>
+					<br><br><br><br><br><br><br><br>
+
 
 				</div>
 			</section>

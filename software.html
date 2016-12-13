@@ -34,14 +34,15 @@
 				<div class="container">
 
 					<header class="major">
-						<h2>Generic</h2>
-						<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+						<h2>Final Software System</h2>
+
 					</header>
 
-					<a href="#" class="image fit"><img src="images/pic08.jpg" alt="" /></a>
-					<p>Vis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan.</p>
-					<p>Amet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan commodo odio cubilia ac eu interdum placerat placerat arcu commodo lobortis adipiscing semper ornare pellentesque.</p>
-					<p>Amet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet blandit adipiscing arcu ante.</p>
+					<p>In the end, the software involved reading from multiple sensors and comparing them against the starting conditions of the turtle. Based on different circumstances, the Raspberry Pi then returned the direction the turtle should go, whether continuing forward, turning to the left or right, or staying still for a while. The data was then logged, with the hopes of doing more with it in the future.</p>
+					<p>The below code snippet shows the main control loop of the turtle. If the turtle had not received too much light (which could burn the plant), and the inside of the shell was not too hot, it tried to stay in the light. For this, we checked the value of the light sensors. If there was shade in front, we tried to turn. If there was not, we checked the IR sensors. If something was in front, we tried turning. If something was to the right, we turned left. We also checked the soil moisture level, and if that level was too low, we instructed the eyes to change color to alert the turtle owner that they needed to water their plant.</p><p>The below code snippet shows the main control loop of the turtle. If the turtle had not received too much light (which could burn the plant), and the inside of the shell was not too hot, it tried to stay in the light. For this, we checked the value of the light sensors. If there was shade in front, we tried to turn. If there was not, we checked the IR sensors. If something was in front, we tried turning. If something was to the right, we turned left. We also checked the soil moisture level, and if that level was too low, we instructed the eyes to change color to alert the turtle owner that they needed to water their plant.</p>
+					<span class="image center"><img src="images/sProcess6.png" alt=""/></span>
+					<br><br><br>
+					<p>The motion of the legs was controlled by the arduino. A couple simple switches on the bottom of the feet let us know whether a leg was down, so that the steps would remain asynchronous.</p>
 
 				</div>
 			</section>
