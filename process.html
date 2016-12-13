@@ -62,7 +62,7 @@
             $("div.slide").click(function () {
                 var idx = $(this).index();
                 var col = $(this).css('background-color');
-                $("body").css('border-color',col);
+                $("body").css('border-color', col);
                 console.log(col);
 
                 showSlide(idx);
@@ -374,13 +374,129 @@
                     when the leg
                     is on the ground:</p>
 
-                <p>We ran into problems with finding analog pins that could be used to read the sensors and were not
-                    already assigned to another task on the motor shield. Once we realized this problem it was an
-                    easy
-                    fix to avoid using those analog pins for sensors.</p>
+                <figure class="fig">
+                    <img src="images/mech/s2/Free_body_diagram.png"/>
+                    <figcaption>
+                        A simple model for the forces acting on the leg.
+                    </figcaption>
+                </figure>
+
+                <p>The servo is at the connection between the leg and the body, and therefore must support part of the
+                    weight of the body. The center of gravity of the robot body is pulling downwards, creating a torque
+                    on the servo. The leg also has a tendency to create torque in the same direction, but for this rough
+                    calculation, we ignored that. The servo needs to be able to support this weight of the body, or
+                    equivalently, the torque produced by the body cannot exceed the stall torque, and preferably, is
+                    less than ½ of the stall torque. From the following helpful diagram from Vexrobotics, we learned
+                    that the optimal load the servo should experience is less than ½ of its stall torque, although it
+                    can work with more load:</p>
+
+                <figure class="fig">
+                    <img src="images/mech/s2/speed_vs_load.PNG"/>
+                    <figcaption>
+                        The optimal load on a servo is less than 1/2 of its stall torque.
+                    </figcaption>
+                </figure>
+
+                <p>Torque is &#964;=<i>r x F</i>=<i>rF sin(&#952;)</i>, where r is the distance to the center of mass from the servo, F is the weight
+                    being supported, and theta is the angle between them. will be at a maximum when theta is 90,
+                    therefore Tstall>rF.</p>
+
+                <p>Because we would be focusing on having two legs working this sprint with a supporting wheel in the
+                    back, each servo need support only ⅓ of the weight, but for safety, we calculated with ½ of the
+                    weight. Using the above equation, we found the maximum weight our robot could be with the servos we
+                    had. The stall torque of our servo was 3.2kgF*cm = 0.3138N*m.</p>
+                12Tstall>0.15cm*9.8m/s^2*m&#8658;1/2*0.3138N*m>0.15cm*9.8m/s^2*m&#8660;m<0.21kg
+
+                <p>A mass of 0.21 kg for our robot this sprint was very reasonable, as only electronics, thin wood and
+                    servos would be supported. However, based on this calculation, if we stayed with a similar design,
+                    we could need to acquire servos with greater stall torque in the following sprints.</p>
+
+
+                <p>Later in the sprint, we realized that stronger servos would not fix our problem of weight. Unlike the
+                    quadrupedal robots we were using as inspiration, built to completely mimic the motion of a four
+                    legged creature, our robot’s intention was to only look like a turtle. We were therefore able to
+                    simplify the problem of quadrupedal motion to a mostly aesthetic implementation. The legs would have
+                    the task of propelling the turtle forwards, while the weight would be supported by three caster
+                    wheels.</p>
+
+
+                <p>With a reduced need to worry about overloading servos with body weight, we moved on to designing the
+                    legs. To collaborate on CAD, we chose to use GrabCAD to share files easily. Because we knew that the
+                    design process would be iterative and did not want to construct the whole system each time from
+                    scratch, we learned master modelling. In our adaptation of the concept, all of our parts are derived
+                    from a master part that contains sketches and reference geometries. Although the concept of using
+                    spatial geometry to define everything before having a concrete 3D object was confusing at first, the
+                    process proved to be a very useful skill and saved us a lot of time when modifying and changing our
+                    CAD.</p>
+
+
+                <p>As an initial pass, we mimicked the design of the legs on the Allbot. It has a yaw servo on the base
+                    plate that moves the leg right and left and a pitch servo that tips the lower part of the leg up and
+                    down. Each servo is encapsulated by a support and attached to a bracket that attaches to the next
+                    servo or a foot.</p>
+
+                <div style="text-align: center">
+                    <figure class="fig" style="float:left; width : 30%">
+                        <img src="images/mech/s2/allbot.png" style="width: 100%;"/>
+                        <figcaption>
+                            We modelled our motion this sprint after the Allbot VR408.
+                        </figcaption>
+                    </figure>
+
+                    <figure class="fig" style="width: 40%; float:right;">
+                        <img src="images/mech/s2/sprint_2_leg_cad.JPG" style="width:100%;"/>
+                        <figcaption>
+                            Above is a CAD image of our recreated leg system.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div style="clear: both;"></div>
+
+                <p>We really liked the simple design of the servo mounts and brackets on the Allbot. The same parts
+                    could be used for both servos, supporting the moving portion from two sides, and making it easy to
+                    mount the servo anywhere we needed to. However, because our servos were much bigger and bulkier, the
+                    servo mounts needed to be designed differently for both parts, and were not very convenient upon
+                    assembly. Each servo support required 4 nuts and bolts which were very closely toleranced and hard
+                    to quickly disassemble and reassemble. Another problem we ran into was mounting the brackets to
+                    servo horns; one screw was not enough to constrain the brackets to the rotation of the horn. We used
+                    copious amounts of hot glue to make up for this fact, sacrificing the modularity of our design,
+                    because trying to remove an attachment resulted in many broken brackets.</p>
+
+                <figure class="fig">
+                    <img src="images/mech/s2/sprint_2_broken_turtle_leg.jpg"/>
+                    <figcaption>
+                        The first test of the leg showed that hot glue is not a great fastener when we needed to test
+                        and iterate on our design.
+                    </figcaption>
+                </figure>
+
+                <p>Instead of a cardboard chassis, we lasercut one from scrap hardboard. Upon assembly of the whole
+                    system, we proceeded to test its movements. To give the legs more flexibility, we introduced a small
+                    compressional part to the foot in the form of foam. One leg was higher above the ground and could
+                    not push off of it, and we attached a thicker piece of foam to make up for the difference. The
+                    movement of this leg was improved but the leg of proper length remained the dominating contributor
+                    to the motion and skewed the overall trajectory of the turtle to be more circular rather than
+                    linear. As the foam did not provide a lot of push against the table we were testing on, we increased
+                    the friction between them by adding rubbery tape to the bottom, helping the turtle push forwards
+                    more forcefully.</p>
+
+
+                <p>We settled on a crawling gait for our turtle in which one leg at a time is lifted, rotated forwards,
+                    and set back down as the opposite leg slowly rotates backwards.</p>
+
+                <figure class="fig">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5H8YFme2nk4" frameborder="0"
+                            allowfullscreen></iframe>
+                    <figcaption>The crawling gait was determined to be the most effective gait for our turtle.
+                    </figcaption>
+                </figure>
+
+                <p>While the turtle successfully propelled itself, it effectively counteracted most of its progress
+                    because it had no third degree of freedom. The foam padding we added initially was not enough to
+                    provide this flexibility.</p>
 
             </div>
-
 
         </div>
     </div>
